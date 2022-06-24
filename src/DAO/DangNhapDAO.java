@@ -105,7 +105,7 @@ public class DangNhapDAO extends KetNoiDAO {
     }
 
     public int updateAcc(String taikhoan, String tennv, String sdt, String matkhau) throws Exception {
-        String sql = "update ACCOUNT set TENNV='" + tennv + "',PHONE='" + sdt + "',PASS='" + matkhau + "' where USERNAME='" + taikhoan + "'";
+        String sql = "update ACCOUNT set TENNV=N'" + tennv + "',PHONE='" + sdt + "',PASS='" + matkhau + "' where USERNAME='" + taikhoan + "'";
         conn = KetNoiDAO.getKetNoiDAO();
         ps = conn.prepareStatement(sql);
         int update = ps.executeUpdate();
