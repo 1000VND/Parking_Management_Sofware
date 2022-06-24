@@ -17,5 +17,6 @@ public class a_Do_an_lap_trinh_huong_doi_tuong {
         A_FLogin fLogin= new A_FLogin();
         fLogin.setVisible(true); 
     }
+//thay doi
     
 }
