@@ -47,7 +47,6 @@ public class E_FMenuStaff extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnDangXuat = new javax.swing.JButton();
         txtChaomung = new javax.swing.JButton();
         btnDoimaukhau = new javax.swing.JLabel();
         btnThoat = new javax.swing.JLabel();
@@ -66,23 +65,6 @@ public class E_FMenuStaff extends javax.swing.JFrame {
         setLocationByPlatform(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-
-        btnDangXuat.setBackground(new java.awt.Color(255, 255, 65));
-        btnDangXuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/download-icon-left+previous+icon-1320166862746760425_24.png"))); // NOI18N
-        btnDangXuat.setText("Đăng Xuất");
-        btnDangXuat.setToolTipText("");
-        btnDangXuat.setBorder(null);
-        btnDangXuat.setBorderPainted(false);
-        btnDangXuat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDangXuat.setFocusPainted(false);
-        btnDangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnDangXuat.setName("btnDangXuat"); // NOI18N
-        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangXuatActionPerformed(evt);
-            }
-        });
 
         txtChaomung.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtChaomung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/icons8_user_45px.png"))); // NOI18N
@@ -122,13 +104,11 @@ public class E_FMenuStaff extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(txtChaomung, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                 .addComponent(btnDoimaukhau, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+                .addGap(130, 130, 130))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +116,7 @@ public class E_FMenuStaff extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtChaomung)))
+                        .addComponent(txtChaomung))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -337,11 +315,6 @@ public class E_FMenuStaff extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        new A_FLogin().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnDangXuatActionPerformed
-
     private void btnTraXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraXeActionPerformed
         if (TabMainBoard.getSelectedIndex() == 0) {
             TabMainBoard.remove(0);
@@ -426,7 +399,6 @@ public class E_FMenuStaff extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane TabMainBoard;
     private javax.swing.JButton btnDangKyVeThang;
-    private javax.swing.JButton btnDangXuat;
     private javax.swing.JLabel btnDoimaukhau;
     private javax.swing.JButton btnNhanXe;
     private javax.swing.JLabel btnThoat;

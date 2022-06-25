@@ -406,7 +406,6 @@ public class PFQuanLyVeNgay extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemVeActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        // TODO add your handling code here:
         try {
             String checkVe = txtMaCu.getText();
             NhapXeDAO tv1 = new NhapXeDAO();
@@ -418,11 +417,10 @@ public class PFQuanLyVeNgay extends javax.swing.JPanel {
                 txtMaCu.setText("");
                 txtMaMoi.setText("");
             } else {
-
                 TongVeDAO tv = new TongVeDAO();
                 TongVeDTO dto2 = tv.checkVe(checkVe);
                 if (dto2 != null) {
-                    JOptionPane.showMessageDialog(this, "Không thể cập nhật vé tháng thành vé tháng đã tồn tại!");
+                    JOptionPane.showMessageDialog(this, "Không thể cập nhật vé thành vé đã tồn tại!");
                     txtMaMoi.setText("");
                 } else {
                     String vecandoi = txtMaMoi.getText();
