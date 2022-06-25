@@ -407,27 +407,27 @@ public class PFQuanLyVeNgay extends javax.swing.JPanel {
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
         try {
-            String checkVe = txtMaCu.getText();
-            NhapXeDAO tv1 = new NhapXeDAO();
-            NhapXeDTO dto = tv1.checkVe(checkVe);
-            if (dto != null) {
-                JOptionPane.showMessageDialog(this, "Xe đang ở trong bãi, khách đang cầm vé không thể cập nhật vé!");
-                loadTable();
-                txtXoaVe.setText("");
-                txtMaCu.setText("");
-                txtMaMoi.setText("");
+            if (txtMaMoi.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Chưa nhập mã vé cần đổi");
             } else {
-                TongVeDAO tv = new TongVeDAO();
-                TongVeDTO dto2 = tv.checkVe(checkVe);
-                if (dto2 != null) {
-                    JOptionPane.showMessageDialog(this, "Không thể cập nhật vé thành vé đã tồn tại!");
+                String checkVe = txtMaCu.getText();
+                String vecandoi = txtMaMoi.getText();
+                NhapXeDAO tv1 = new NhapXeDAO();
+                NhapXeDTO dto = tv1.checkVe(checkVe);
+                if (dto != null) {
+                    JOptionPane.showMessageDialog(this, "Xe đang ở trong bãi, khách đang cầm vé không thể cập nhật vé!");
+                    loadTable();
+                    txtXoaVe.setText("");
+                    txtMaCu.setText("");
                     txtMaMoi.setText("");
                 } else {
-                    String vecandoi = txtMaMoi.getText();
-                    TongVeDAO doive = new TongVeDAO();
-                    if (txtMaMoi.getText().equals("")) {
-                        JOptionPane.showMessageDialog(this, "Chưa nhập mã vé cần đổi");
+                    TongVeDAO tv = new TongVeDAO();
+                    TongVeDTO dto2 = tv.checkVe(vecandoi);
+                    if (dto2 != null) {
+                        JOptionPane.showMessageDialog(this, "Không thể cập nhật vé thành vé đã tồn tại!");
+                        txtMaMoi.setText("");
                     } else {
+                        TongVeDAO doive = new TongVeDAO();
                         if (doive.updateVe(checkVe, vecandoi) != 0) {
                             JOptionPane.showMessageDialog(this, "Cập nhật vé thành công");
                             for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
@@ -438,9 +438,11 @@ public class PFQuanLyVeNgay extends javax.swing.JPanel {
                         } else {
                             JOptionPane.showMessageDialog(this, "Cập nhật vé thất bại");
                         }
+
                     }
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
