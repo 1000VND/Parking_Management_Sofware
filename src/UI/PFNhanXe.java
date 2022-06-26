@@ -22,7 +22,7 @@ import javax.swing.Timer;
  * @author Admin
  */
 public class PFNhanXe extends javax.swing.JPanel {
-
+//them comment o day
     /**
      * Creates new form PFReceiveCar
      */
