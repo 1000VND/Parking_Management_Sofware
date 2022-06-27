@@ -424,6 +424,7 @@ public class PFNhanXe extends javax.swing.JPanel {
                 if (cbxLoaiXe.getSelectedItem().toString().equals("Ô tô")) {
                     loadcbxKhuVuc("Ô tô", loaive);
                     loadcbxViTri(loaive);
+                    
                     cbxViTri.setEnabled(true);
                 } else if (cbxLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
                     loadcbxKhuVuc("Xe máy", loaive);
