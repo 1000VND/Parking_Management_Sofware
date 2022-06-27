@@ -6,6 +6,7 @@ package UI;
 
 import DAO.NhapXeDAO;
 import DTO.NhapXeDTO;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -13,9 +14,11 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.border.Border;
 
 /**
  *
@@ -145,6 +148,7 @@ public class PFNhanXe extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         txtGionhan = new javax.swing.JTextField();
         btnXacNhan = new javax.swing.JButton();
+        lbBienso = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -194,6 +198,11 @@ public class PFNhanXe extends javax.swing.JPanel {
         txtBienso.setBorder(null);
         txtBienso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtBienso.setName("txtBienso"); // NOI18N
+        txtBienso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBiensoMouseClicked(evt);
+            }
+        });
         txtBienso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBiensoActionPerformed(evt);
@@ -294,6 +303,8 @@ public class PFNhanXe extends javax.swing.JPanel {
             }
         });
 
+        lbBienso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -306,17 +317,19 @@ public class PFNhanXe extends javax.swing.JPanel {
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                .addComponent(txtBienso, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cbxMave, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtMauxe, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtMauxe, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbBienso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtBienso, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -378,7 +391,9 @@ public class PFNhanXe extends javax.swing.JPanel {
                     .addComponent(txtGionhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(txtBienso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbBienso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxViTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
@@ -424,7 +439,6 @@ public class PFNhanXe extends javax.swing.JPanel {
                 if (cbxLoaiXe.getSelectedItem().toString().equals("Ô tô")) {
                     loadcbxKhuVuc("Ô tô", loaive);
                     loadcbxViTri(loaive);
-                    
                     cbxViTri.setEnabled(true);
                 } else if (cbxLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
                     loadcbxKhuVuc("Xe máy", loaive);
@@ -518,7 +532,7 @@ public class PFNhanXe extends javax.swing.JPanel {
                     cbxLoaiXe.setSelectedItem(nxt.getLoaiXe());
                     if (cbxLoaiXe.getSelectedItem().toString().equals("Ô tô")) {
                         loadcbxViTri(loaive);
-                    } 
+                    }
                 }
             }
         }
@@ -529,7 +543,10 @@ public class PFNhanXe extends javax.swing.JPanel {
         try {
             if (cbxLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
                 if (txtBienso.getText().equals("")) {
-                    JOptionPane.showMessageDialog(this, "Vui lòng nhập biển số");
+                    lbBienso.setText("*Vui lòng nhập biển số.");
+                    lbBienso.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtBienso.setBorder(RedLine);
                 } else {
                     String checkBienso = txtBienso.getText();
                     String loaive = cbxLoaive.getSelectedItem().toString();
@@ -547,7 +564,6 @@ public class PFNhanXe extends javax.swing.JPanel {
                             loadMave(checkBienso);
                             loadLoaiXe();
                             loadChonVe();
-
                             loadcbxKhuVuc(loaixe, loaive);
                             loadcbxViTri(loaive);
                             txtBienso.setText("");
@@ -559,7 +575,10 @@ public class PFNhanXe extends javax.swing.JPanel {
                 }
             } else {
                 if (txtBienso.getText().equals("")) {
-                    JOptionPane.showMessageDialog(this, "Vui lòng nhập biển số");
+                    lbBienso.setText("*Vui lòng nhập biển số.");
+                    lbBienso.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtBienso.setBorder(RedLine);
                 } else {
                     String checkBienso = txtBienso.getText();
                     NhapXeDAO nx = new NhapXeDAO();
@@ -593,6 +612,11 @@ public class PFNhanXe extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
+    private void txtBiensoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBiensoMouseClicked
+        lbBienso.setText("");
+        txtBienso.setBorder(null);
+    }//GEN-LAST:event_txtBiensoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnXacNhan;
@@ -611,6 +635,7 @@ public class PFNhanXe extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbBienso;
     private javax.swing.JTextField txtBienso;
     private javax.swing.JTextField txtGionhan;
     private javax.swing.JTextField txtMauxe;
