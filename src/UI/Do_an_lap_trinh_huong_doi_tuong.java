@@ -8,7 +8,7 @@ package UI;
  *
  * @author Admin
  */
-public class a_Do_an_lap_trinh_huong_doi_tuong {
+public class Do_an_lap_trinh_huong_doi_tuong {
 
     /**
      * @param args the command line arguments
@@ -17,6 +17,5 @@ public class a_Do_an_lap_trinh_huong_doi_tuong {
         FLogin fLogin= new FLogin();
         fLogin.setVisible(true); 
     }
-//thay doi
     
 }
