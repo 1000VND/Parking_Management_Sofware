@@ -14,7 +14,7 @@ public class a_Do_an_lap_trinh_huong_doi_tuong {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        A_FLogin fLogin= new A_FLogin();
+        FLogin fLogin= new FLogin();
         fLogin.setVisible(true); 
     }
 //thay doi
