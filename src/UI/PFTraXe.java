@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
+
 import DAO.TraXeDAO;
 import DTO.NhapXeDTO;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -26,11 +28,12 @@ public class PFTraXe extends javax.swing.JPanel {
      */
     public PFTraXe() {
         initComponents();
-        setSize(1040,545);
-              showTable();
+        setSize(1040, 545);
+        showTable();
         loadTabel();
     }
-private void showTable() {
+
+    private void showTable() {
         DefaultTableModel tblModel;
         tblModel = new DefaultTableModel();
         tblModel.setColumnIdentifiers(new String[]{"Loại Xe", "Biển Số Xe", "Màu Xe", "Mã Vé", "Khu Vực", "Vị Trí", "Ngày Nhận", "Giờ Nhận"});
@@ -153,9 +156,15 @@ private void showTable() {
                 txtTimKiemActionPerformed(evt);
             }
         });
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyPressed(evt);
+            }
+        });
 
+        cbxTimKiem.setBackground(new java.awt.Color(102, 102, 255));
         cbxTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Theo biển số", "Theo mã vé" }));
         cbxTimKiem.setBorder(null);
         cbxTimKiem.setFocusable(false);
         cbxTimKiem.setName("cbxTImKiemItem"); // NOI18N
@@ -313,9 +322,9 @@ private void showTable() {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbxTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
+                        .addGap(28, 28, 28)
+                        .addComponent(cbxTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
                         .addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
@@ -400,7 +409,6 @@ private void showTable() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -414,7 +422,6 @@ private void showTable() {
     }//GEN-LAST:event_cbxTimKiemActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        // TODO add your handling code here:
         DefaultTableModel tblModel = (DefaultTableModel) TableTTXe.getModel();
         Object[] row = new Object[8];
         if (cbxTimKiem.getSelectedItem().toString().equals("Theo biển số")) {
@@ -543,7 +550,7 @@ private void showTable() {
         txtTimKiem.setText("");
         loadTabel();
     }//GEN-LAST:event_btnLamMoiActionPerformed
- private void cbxTimKiemItemStateChanged(java.awt.event.ItemEvent evt) {
+    private void cbxTimKiemItemStateChanged(java.awt.event.ItemEvent evt) {
         // TODO add your handling code here:
         cbxTimKiem = (JComboBox<String>) evt.getSource();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
@@ -554,10 +561,95 @@ private void showTable() {
     }
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
 //       new FHoaDon().setVisible(true);
-    String vexe = txtMaVe.getText();
+        String vexe = txtMaVe.getText();
         FHoaDon hd = new FHoaDon(vexe);
         hd.setVisible(true);
     }//GEN-LAST:event_btnInHoaDonActionPerformed
+
+    private void txtTimKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            DefaultTableModel tblModel = (DefaultTableModel) TableTTXe.getModel();
+            Object[] row = new Object[8];
+            if (cbxTimKiem.getSelectedItem().toString().equals("Theo biển số")) {
+                for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
+                    tblModel.removeRow(i);
+                }
+                TraXeDAO tx = new TraXeDAO();
+                NhapXeDTO nx = tx.findXebyBienso(txtTimKiem.getText());
+                if (nx != null) {
+                    for (int i = 0; i < 1; i++) {
+                        row[0] = nx.getLoaiXe();
+                        row[1] = nx.getBienSo();
+                        row[2] = nx.getMauXe();
+                        row[3] = nx.getMaVe();
+                        row[4] = nx.getKhuVuc();
+                        row[5] = nx.getViTri();
+                        row[6] = nx.getNgayGui();
+                        row[7] = nx.getGioGui();
+                        tblModel.addRow(row);
+                    }
+                    TableTTXe.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                        @Override
+                        public void valueChanged(ListSelectionEvent e) {
+                            if (TableTTXe.getSelectedRow() >= 0) {
+                                txtLoaiXe.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 0) + "");
+                                txtBienSo.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 1) + "");
+                                txtMauXe.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 2) + "");
+                                txtMaVe.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 3) + "");
+                                txtKhuVuc.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 4) + "");
+                                txtViTri.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 5) + "");
+                                txtNgayNhan.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 6) + "");
+                                txtGioNhan.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 7) + "");
+                            }
+                        }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không tìm thấy xe có biển số " + txtTimKiem.getText() + " \nVui lòng nhập lại biển số");
+                    loadTabel();
+                    txtTimKiem.setText("");
+                }
+            } else {
+                for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
+                    tblModel.removeRow(i);
+                }
+                TraXeDAO tx = new TraXeDAO();
+                NhapXeDTO nx = tx.findXebyMave(txtTimKiem.getText());
+                if (nx != null) {
+                    for (int i = 0; i < 1; i++) {
+                        row[0] = nx.getLoaiXe();
+                        row[1] = nx.getBienSo();
+                        row[2] = nx.getMauXe();
+                        row[3] = nx.getMaVe();
+                        row[4] = nx.getKhuVuc();
+                        row[5] = nx.getViTri();
+                        row[6] = nx.getNgayGui();
+                        row[7] = nx.getGioGui();
+                        tblModel.addRow(row);
+                    }
+                    TableTTXe.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                        @Override
+                        public void valueChanged(ListSelectionEvent e) {
+                            if (TableTTXe.getSelectedRow() >= 0) {
+                                txtLoaiXe.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 0) + "");
+                                txtBienSo.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 1) + "");
+                                txtMauXe.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 2) + "");
+                                txtMaVe.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 3) + "");
+                                txtKhuVuc.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 4) + "");
+                                txtViTri.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 5) + "");
+                                txtNgayNhan.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 6) + "");
+                                txtGioNhan.setText(TableTTXe.getValueAt(TableTTXe.getSelectedRow(), 7) + "");
+                            }
+                        }
+                    });
+                } else {
+                    JOptionPane.showMessageDialog(this, "Không tìm thấy vé xe " + txtTimKiem.getText() + " \nVui lòng nhập mã vé");
+                    loadTabel();
+                    txtTimKiem.setText("");
+                }
+            }
+        }
+    }//GEN-LAST:event_txtTimKiemKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

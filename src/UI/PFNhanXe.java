@@ -3,11 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
+
 import DAO.NhapXeDAO;
 import DTO.NhapXeDTO;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+
 /**
  *
  * @author Admin
@@ -26,19 +30,19 @@ public class PFNhanXe extends javax.swing.JPanel {
      */
     public PFNhanXe() {
         initComponents();
-        setSize(1000,505);
-            autoDate();
+        setSize(1000, 505);
+        autoDate();
         autoTime();
         loadChonVe();
         loadLoaiXe();
         String loaixe = cbxLoaiXe.getSelectedItem().toString();
         String loaive = cbxLoaive.getSelectedItem().toString();
-
         loadMave(loaive);
         loadcbxKhuVuc(loaixe, loaive);
         loadcbxViTri(loaive);
     }
-private void autoDate() {
+
+    private void autoDate() {
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         txtNgaynhan.setText(s.format(d));
@@ -162,11 +166,6 @@ private void autoDate() {
                 cbxLoaiveItemStateChanged(evt);
             }
         });
-        cbxLoaive.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxLoaiveActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Mã Vé : ");
@@ -183,11 +182,6 @@ private void autoDate() {
                 cbxMaveItemStateChanged(evt);
             }
         });
-        cbxMave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxMaveActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Biển Số Xe :");
@@ -195,9 +189,9 @@ private void autoDate() {
         txtBienso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtBienso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtBienso.setName("txtBienso"); // NOI18N
-        txtBienso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBiensoActionPerformed(evt);
+        txtBienso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBiensoKeyPressed(evt);
             }
         });
 
@@ -207,6 +201,11 @@ private void autoDate() {
         txtMauxe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMauxe.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtMauxe.setName("txtMauxe"); // NOI18N
+        txtMauxe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMauxeKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Loại Xe :");
@@ -221,11 +220,6 @@ private void autoDate() {
         cbxLoaiXe.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxLoaiXeItemStateChanged(evt);
-            }
-        });
-        cbxLoaiXe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxLoaiXeActionPerformed(evt);
             }
         });
 
@@ -243,11 +237,6 @@ private void autoDate() {
         cbxKhuVuc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxKhuVuc.setFocusable(false);
         cbxKhuVuc.setName("cbxKhuVuc"); // NOI18N
-        cbxKhuVuc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxKhuVucActionPerformed(evt);
-            }
-        });
 
         cbxViTri.setBackground(new java.awt.Color(102, 102, 255));
         cbxViTri.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -256,11 +245,6 @@ private void autoDate() {
         cbxViTri.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxViTri.setFocusable(false);
         cbxViTri.setName("cbxViTri"); // NOI18N
-        cbxViTri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxViTriActionPerformed(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel8.setText("Ngày Nhận :");
@@ -273,11 +257,6 @@ private void autoDate() {
 
         txtGionhan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtGionhan.setName("txtGionhan"); // NOI18N
-        txtGionhan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGionhanActionPerformed(evt);
-            }
-        });
 
         btnXacNhan.setBackground(new java.awt.Color(102, 102, 255));
         btnXacNhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -310,22 +289,22 @@ private void autoDate() {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxLoaive, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48)
+                                .addComponent(cbxLoaive, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cbxMave, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                                         .addComponent(txtMauxe, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                        .addComponent(txtBienso, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(cbxMave, 0, 141, Short.MAX_VALUE)
+                                            .addComponent(txtBienso, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -338,17 +317,17 @@ private void autoDate() {
                                                 .addComponent(jLabel7)
                                                 .addGap(44, 44, 44)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbxViTri, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cbxKhuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(cbxViTri, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cbxKhuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel8))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNgaynhan, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                                    .addComponent(txtGionhan)))
+                                    .addComponent(txtNgaynhan, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                                    .addComponent(txtGionhan, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
                             .addComponent(jSeparator2)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -402,37 +381,9 @@ private void autoDate() {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxViTriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxViTriActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxViTriActionPerformed
-
-    private void cbxKhuVucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxKhuVucActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxKhuVucActionPerformed
-
-    private void cbxLoaiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxLoaiveActionPerformed
-
-    private void cbxLoaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiXeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxLoaiXeActionPerformed
-
-    private void txtGionhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGionhanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGionhanActionPerformed
-
-    private void txtBiensoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBiensoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBiensoActionPerformed
-
-    private void cbxMaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxMaveActionPerformed
-
     private void cbxLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLoaiXeItemStateChanged
         // TODO add your handling code here:
-                cbxLoaiXe = (JComboBox<String>) evt.getSource();
+        cbxLoaiXe = (JComboBox<String>) evt.getSource();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String loaixe = cbxLoaiXe.getSelectedItem().toString();
             String loaive = cbxLoaive.getSelectedItem().toString();
@@ -462,7 +413,7 @@ private void autoDate() {
 
     private void cbxLoaiveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLoaiveItemStateChanged
         // TODO add your handling code here:
-             cbxLoaive = (JComboBox<String>) evt.getSource();
+        cbxLoaive = (JComboBox<String>) evt.getSource();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String loaixe = cbxLoaiXe.getSelectedItem().toString();
             String loaive = cbxLoaive.getSelectedItem().toString();
@@ -498,6 +449,8 @@ private void autoDate() {
                     cbxKhuVuc.setEnabled(false);
                     txtBienso.setEnabled(false);
                     txtMauxe.setEnabled(false);
+                    txtBienso.setDisabledTextColor(Color.black);
+                    txtMauxe.setDisabledTextColor(Color.black);
                     cbxViTri.removeAllItems();
                     cbxKhuVuc.removeAllItems();
                     loadMave(loaive);
@@ -508,19 +461,20 @@ private void autoDate() {
                     cbxKhuVuc.setEnabled(false);
                     txtBienso.setEnabled(false);
                     txtMauxe.setEnabled(false);
+                    txtBienso.setDisabledTextColor(Color.black);
+                    txtMauxe.setDisabledTextColor(Color.black);
                     cbxViTri.removeAllItems();
                     cbxKhuVuc.removeAllItems();
                     loadcbxKhuVuc(loaixe, loaive);
                     loadMave(loaive);
                 }
-
             }
         }
     }//GEN-LAST:event_cbxLoaiveItemStateChanged
 
     private void cbxMaveItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxMaveItemStateChanged
         // TODO add your handling code here:
-            cbxMave = (JComboBox<String>) evt.getSource();
+        cbxMave = (JComboBox<String>) evt.getSource();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             if (cbxLoaive.getSelectedItem().toString().equals("Vé Tháng")) {
                 String loaive = cbxLoaive.getSelectedItem().toString();
@@ -534,14 +488,13 @@ private void autoDate() {
                     cbxLoaiXe.setSelectedItem(nxt.getLoaiXe());
                     if (cbxLoaiXe.getSelectedItem().toString().equals("Ô tô")) {
                         loadcbxViTri(loaive);
-                    } 
+                    }
                 }
             }
         }
     }//GEN-LAST:event_cbxMaveItemStateChanged
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
-        // TODO add your handling code here:
         try {
             if (cbxLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
                 if (txtBienso.getText().equals("")) {
@@ -608,6 +561,146 @@ private void autoDate() {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
+
+    private void txtBiensoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBiensoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                if (cbxLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
+                    if (txtBienso.getText().equals("")) {
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập biển số");
+                    } else {
+                        String checkBienso = txtBienso.getText();
+                        String loaive = cbxLoaive.getSelectedItem().toString();
+                        String khuvuc = cbxKhuVuc.getSelectedItem().toString();
+                        String loaixe = cbxLoaiXe.getSelectedItem().toString();
+                        NhapXeDAO nx = new NhapXeDAO();
+                        NhapXeDTO checkxe = nx.checkBien(checkBienso);
+                        if (checkxe != null) {
+                            JOptionPane.showMessageDialog(this, "Xe đã có trong bãi");
+                            txtBienso.setText("");
+                        } else {
+                            NhapXeDTO themxe = addXe();
+                            if (nx.ThemXe(themxe) > 0) {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thành công!");
+                                loadMave(checkBienso);
+                                loadLoaiXe();
+                                loadChonVe();
+
+                                loadcbxKhuVuc(loaixe, loaive);
+                                loadcbxViTri(loaive);
+                                txtBienso.setText("");
+                                txtMauxe.setText("");
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thất bại!");
+                            }
+                        }
+                    }
+                } else {
+                    if (txtBienso.getText().equals("")) {
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập biển số");
+                    } else {
+                        String checkBienso = txtBienso.getText();
+                        NhapXeDAO nx = new NhapXeDAO();
+                        NhapXeDTO checkxe = nx.checkBien(checkBienso);
+                        if (checkxe != null) {
+                            JOptionPane.showMessageDialog(this, "Xe đã có trong bãi");
+                            txtBienso.setText("");
+                        } else {
+                            NhapXeDTO themxe = addXe();
+                            String loaive = cbxLoaive.getSelectedItem().toString();
+                            String khuvuc = cbxKhuVuc.getSelectedItem().toString();
+                            String loaixe = cbxLoaiXe.getSelectedItem().toString();
+                            if (nx.ThemXe(themxe) > 0) {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thành công!");
+                                loadMave(checkBienso);
+                                loadLoaiXe();
+                                loadChonVe();
+
+                                loadcbxKhuVuc(loaixe, loaive);
+                                loadcbxViTri(loaive);
+                                txtBienso.setText("");
+                                txtMauxe.setText("");
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thất bại!");
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtBiensoKeyPressed
+
+    private void txtMauxeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMauxeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                if (cbxLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
+                    if (txtBienso.getText().equals("")) {
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập biển số");
+                    } else {
+                        String checkBienso = txtBienso.getText();
+                        String loaive = cbxLoaive.getSelectedItem().toString();
+                        String khuvuc = cbxKhuVuc.getSelectedItem().toString();
+                        String loaixe = cbxLoaiXe.getSelectedItem().toString();
+                        NhapXeDAO nx = new NhapXeDAO();
+                        NhapXeDTO checkxe = nx.checkBien(checkBienso);
+                        if (checkxe != null) {
+                            JOptionPane.showMessageDialog(this, "Xe đã có trong bãi");
+                            txtBienso.setText("");
+                        } else {
+                            NhapXeDTO themxe = addXe();
+                            if (nx.ThemXe(themxe) > 0) {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thành công!");
+                                loadMave(checkBienso);
+                                loadLoaiXe();
+                                loadChonVe();
+
+                                loadcbxKhuVuc(loaixe, loaive);
+                                loadcbxViTri(loaive);
+                                txtBienso.setText("");
+                                txtMauxe.setText("");
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thất bại!");
+                            }
+                        }
+                    }
+                } else {
+                    if (txtBienso.getText().equals("")) {
+                        JOptionPane.showMessageDialog(this, "Vui lòng nhập biển số");
+                    } else {
+                        String checkBienso = txtBienso.getText();
+                        NhapXeDAO nx = new NhapXeDAO();
+                        NhapXeDTO checkxe = nx.checkBien(checkBienso);
+                        if (checkxe != null) {
+                            JOptionPane.showMessageDialog(this, "Xe đã có trong bãi");
+                            txtBienso.setText("");
+                        } else {
+                            NhapXeDTO themxe = addXe();
+                            String loaive = cbxLoaive.getSelectedItem().toString();
+                            String khuvuc = cbxKhuVuc.getSelectedItem().toString();
+                            String loaixe = cbxLoaiXe.getSelectedItem().toString();
+                            if (nx.ThemXe(themxe) > 0) {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thành công!");
+                                loadMave(checkBienso);
+                                loadLoaiXe();
+                                loadChonVe();
+
+                                loadcbxKhuVuc(loaixe, loaive);
+                                loadcbxViTri(loaive);
+                                txtBienso.setText("");
+                                txtMauxe.setText("");
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Nhập xe thất bại!");
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtMauxeKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

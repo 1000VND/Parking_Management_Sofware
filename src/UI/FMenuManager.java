@@ -6,6 +6,7 @@ package UI;
 
 import DAO.DangNhapDAO;
 import DTO.AccountDTO;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -27,6 +28,11 @@ public class FMenuManager extends javax.swing.JFrame {
         setSize(1270, 720);
         setLocationRelativeTo(this);
         xinchao(user);
+        btnQuanLyNhanVien.setMnemonic(KeyEvent.VK_1);
+        btnQuanLyBaiXe.setMnemonic(KeyEvent.VK_2);
+        btnThongKe.setMnemonic(KeyEvent.VK_3);
+        btnThongTinVeXe.setMnemonic(KeyEvent.VK_4);
+        btnThongTinThem.setMnemonic(KeyEvent.VK_5);
     }
 
     private void xinchao(String user) {
@@ -383,10 +389,10 @@ public class FMenuManager extends javax.swing.JFrame {
 
     private void btnThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseClicked
         // TODO add your handling code here:
-           new FLogin().setVisible(true);
+        new FLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnThoatMouseClicked
- 
+
     /**
      * @param args the command line arguments
      */

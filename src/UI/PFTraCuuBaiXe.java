@@ -101,6 +101,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtXMA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtXMA.setBorder(null);
         txtXMA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtXMA.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtXMA.setEnabled(false);
         txtXMA.setFocusable(false);
         txtXMA.setName("txtXeMayA"); // NOI18N
@@ -109,6 +110,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtXMC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtXMC.setBorder(null);
         txtXMC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtXMC.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtXMC.setEnabled(false);
         txtXMC.setFocusable(false);
         txtXMC.setName("txtXeMayC"); // NOI18N
@@ -117,6 +119,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtXMB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtXMB.setBorder(null);
         txtXMB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtXMB.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtXMB.setEnabled(false);
         txtXMB.setFocusable(false);
         txtXMB.setName("txtXeMayB"); // NOI18N
@@ -130,6 +133,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtXMD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtXMD.setBorder(null);
         txtXMD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtXMD.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtXMD.setEnabled(false);
         txtXMD.setFocusable(false);
         txtXMD.setName("txtXeMayD"); // NOI18N
@@ -143,6 +147,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtTongXM.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTongXM.setBorder(null);
         txtTongXM.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtTongXM.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTongXM.setEnabled(false);
         txtTongXM.setFocusable(false);
         txtTongXM.setName("txtTongXeMay"); // NOI18N
@@ -179,7 +184,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 72, Short.MAX_VALUE)
+                                        .addGap(0, 76, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtXMB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtXMA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -245,6 +250,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtOTE.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtOTE.setBorder(null);
         txtOTE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtOTE.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtOTE.setEnabled(false);
         txtOTE.setFocusable(false);
         txtOTE.setName("txtOToE"); // NOI18N
@@ -258,6 +264,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtOTF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtOTF.setBorder(null);
         txtOTF.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtOTF.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtOTF.setEnabled(false);
         txtOTF.setFocusable(false);
         txtOTF.setName("txtOToF"); // NOI18N
@@ -266,6 +273,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtConTrongE.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtConTrongE.setBorder(null);
         txtConTrongE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtConTrongE.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtConTrongE.setEnabled(false);
         txtConTrongE.setFocusable(false);
         txtConTrongE.setName("txtConLaiE"); // NOI18N
@@ -279,6 +287,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtConTrongF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtConTrongF.setBorder(null);
         txtConTrongF.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtConTrongF.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtConTrongF.setEnabled(false);
         txtConTrongF.setFocusable(false);
         txtConTrongF.setName("txtConLaiF"); // NOI18N
@@ -292,6 +301,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtTongOTo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTongOTo.setBorder(null);
         txtTongOTo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtTongOTo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTongOTo.setEnabled(false);
         txtTongOTo.setFocusable(false);
         txtTongOTo.setName("txtTongOTo"); // NOI18N
@@ -331,7 +341,7 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(101, 101, 101)
                                 .addComponent(txtOTE, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
