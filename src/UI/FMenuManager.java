@@ -49,7 +49,6 @@ public class FMenuManager extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        btnDoiMK = new javax.swing.JLabel();
         btnThoat = new javax.swing.JLabel();
         txtChaomung = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -76,10 +75,6 @@ public class FMenuManager extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/icons8_parking_64px_1.png"))); // NOI18N
         jLabel3.setName("ParkingIcon"); // NOI18N
-
-        btnDoiMK.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnDoiMK.setText("Đổi Mật Khẩu");
-        btnDoiMK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnThoat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/download-icon-left+previous+icon-1320166862746760425_24.png"))); // NOI18N
@@ -111,8 +106,6 @@ public class FMenuManager extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(txtChaomung, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDoiMK)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThoat)
                 .addGap(22, 22, 22))
         );
@@ -126,7 +119,6 @@ public class FMenuManager extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDoiMK)
                             .addComponent(btnThoat)
                             .addComponent(txtChaomung))
                         .addGap(24, 24, 24))))
@@ -433,7 +425,6 @@ public class FMenuManager extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane TabMainBoard;
-    private javax.swing.JLabel btnDoiMK;
     private javax.swing.JButton btnQuanLyBaiXe;
     private javax.swing.JButton btnQuanLyNhanVien;
     private javax.swing.JLabel btnThoat;

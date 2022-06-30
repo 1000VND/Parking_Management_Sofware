@@ -387,7 +387,6 @@ private void autoDate() {
                                         .addGroup(jPanel2Layout.createSequentialGroup()
                                             .addComponent(jLabel14)
                                             .addGap(26, 26, 26)))
-                                    .addGap(18, 18, 18)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtNgayNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
