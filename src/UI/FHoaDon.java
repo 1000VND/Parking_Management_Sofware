@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+
 import DAO.TongXeDAO;
 import DAO.TraXeDAO;
 import DTO.NhapXeDTO;
@@ -14,30 +15,35 @@ import java.text.SimpleDateFormat;
 import javax.swing.Timer;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.Date;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Admin
  */
 public class FHoaDon extends javax.swing.JFrame {
-    
 
     /**
      * Creates new form FHoaDon
      */
     public FHoaDon(String mave) {
         initComponents();
-        setSize(1270,720);
+        setSize(1270, 720);
         setLocationRelativeTo(this);
-                loadHoaDon(mave);
+        loadHoaDon(mave);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        autoDate();
+        autoTime();
+        loadTien();
     }
-private void autoDate() {
+
+    private void autoDate() {
         java.util.Date d = new java.util.Date();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         txtNgayTra.setText(s.format(d));
     }
-    
+
     private void autoTime() {
         new Timer(0, new ActionListener() {
             @Override
@@ -48,13 +54,41 @@ private void autoDate() {
             }
         }).start();
     }
+
+    private void loadTien() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String TuNgay = txtNgayNhan.getText();
+        String DenNgay = txtNgayTra.getText();
+        try {
+            if (txtLoaiXe.getText().trim().equals("Xe máy")) {
+                Date DNgaygui = sdf.parse(TuNgay);
+                Date DNgaytra = sdf.parse(DenNgay);
+                long ngayGui = DNgaygui.getTime();
+                long ngayTra = DNgaytra.getTime();
+                long soNgayMili = ngayTra - ngayGui;
+                long soNgay = soNgayMili / (24 * 60 * 60 * 1000);
+                long tongTien = (soNgay + 1) * 5000;
+                txtThanhTien.setText(String.valueOf(tongTien));
+            } else if (txtLoaiXe.getText().trim().equals("Ô tô")) {
+                Date DNgaygui = sdf.parse(TuNgay);
+                Date DNgaytra = sdf.parse(DenNgay);
+                long ngayGui = DNgaygui.getTime();
+                long ngayTra = DNgaytra.getTime();
+                long soNgayMili = ngayTra - ngayGui;
+                long soNgay = soNgayMili / (24 * 60 * 60 * 1000);
+                long tongTien = (soNgay + 1) * 20000;
+                txtThanhTien.setText(String.valueOf(tongTien));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void loadHoaDon(String mave) {
         try {
-            autoDate();
-            autoTime();
             TraXeDAO tx = new TraXeDAO();
             NhapXeDTO nx = tx.findXebyMave(mave);
-            
+
             if (nx != null) {
                 txtBienSo.setText(nx.getBienSo());
                 txtMauXe.setText(nx.getMauXe());
@@ -66,11 +100,7 @@ private void autoDate() {
                 txtGioNhan.setText(nx.getGioGui());
                 if (txtMaVe.getText().contains("VT") == false) {
                     txtLoaiVe.setText("Vé Ngày");
-                    if (txtLoaiXe.getText().trim().equals("Xe máy")) {
-                        txtThanhTien.setText("3000");
-                    } else {
-                        txtThanhTien.setText("50000");
-                    }
+
                 } else {
                     txtLoaiVe.setText("Vé Tháng");
                     txtThanhTien.setText("0");
@@ -80,7 +110,7 @@ private void autoDate() {
             e.printStackTrace();
         }
     }
-    
+
     public TongXeDTO themHoadon() {
         TongXeDTO themxe = new TongXeDTO();
         themxe.setBienSo(txtBienSo.getText());
@@ -176,11 +206,11 @@ private void autoDate() {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Biển Số Xe :");
         jLabel2.setToolTipText("");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Màu Xe :");
 
         txtMauXe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -196,7 +226,7 @@ private void autoDate() {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Loại Xe :");
 
         txtLoaiXe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -212,7 +242,7 @@ private void autoDate() {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Mã vé :");
 
         txtMaVe.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -228,7 +258,7 @@ private void autoDate() {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("Khu Vực :");
 
         txtKhuVuc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -244,7 +274,7 @@ private void autoDate() {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Vị Trí :");
 
         txtViTri.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -260,7 +290,7 @@ private void autoDate() {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Ngày Nhận :");
 
         txtNgayNhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -271,7 +301,7 @@ private void autoDate() {
         txtNgayNhan.setFocusable(false);
         txtNgayNhan.setName("txtNgayNhan"); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Giờ Nhận :");
 
         txtGioNhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -287,7 +317,7 @@ private void autoDate() {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Ngày Trả :");
 
         txtNgayTra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -298,7 +328,7 @@ private void autoDate() {
         txtNgayTra.setFocusable(false);
         txtNgayTra.setName("txtNgayTra"); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("Giờ Trả :");
 
         txtGioTra.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -314,7 +344,8 @@ private void autoDate() {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 0, 0));
         jLabel12.setText("Thành Tiền :");
         jLabel12.setToolTipText("");
 
@@ -322,7 +353,7 @@ private void autoDate() {
         txtThanhTien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtThanhTien.setBorder(null);
         txtThanhTien.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtThanhTien.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtThanhTien.setDisabledTextColor(new java.awt.Color(255, 0, 0));
         txtThanhTien.setEnabled(false);
         txtThanhTien.setFocusable(false);
         txtThanhTien.setName("txtTongTien"); // NOI18N
@@ -332,10 +363,11 @@ private void autoDate() {
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        jLabel13.setText("VND");
+        jLabel13.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel13.setText(" VND");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setText("Loại Vé :");
         jLabel14.setToolTipText("");
 
@@ -363,9 +395,8 @@ private void autoDate() {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel12))
-                .addGap(21, 21, 21)
+                    .addComponent(jLabel2))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,35 +407,35 @@ private void autoDate() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel13)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel11))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel14)
-                                            .addGap(26, 26, 26)))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNgayNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtGioNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtGioTra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtLoaiVe, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(50, 50, 50))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNgayNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGioNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGioTra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtLoaiVe, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(0, 0, 0)
+                                .addComponent(txtThanhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtKhuVuc, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtViTri, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtThanhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(91, Short.MAX_VALUE))))
+                            .addComponent(txtViTri, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(469, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -447,13 +478,11 @@ private void autoDate() {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtViTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtThanhTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
+                .addGap(116, 116, 116))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -461,9 +490,9 @@ private void autoDate() {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(235, Short.MAX_VALUE)
+                .addContainerGap(220, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(493, 493, 493)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,7 +507,7 @@ private void autoDate() {
                 .addComponent(jLabel1)
                 .addGap(55, 55, 55)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
         );
@@ -535,7 +564,7 @@ private void autoDate() {
     }//GEN-LAST:event_txtLoaiXeActionPerformed
 
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
-try {
+        try {
             TongXeDAO txa = new TongXeDAO();
             TongXeDTO txt = themHoadon();
             String bienso = txtBienSo.getText();
@@ -551,7 +580,7 @@ try {
             } else {
                 JOptionPane.showMessageDialog(this, "Xuất hóa đơn thất bại!");
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }

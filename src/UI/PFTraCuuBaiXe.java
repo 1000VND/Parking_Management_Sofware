@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
+
 import DAO.TraCuuBaiXeDAO;
 import java.awt.event.ItemEvent;
+
 /**
  *
  * @author Admin
@@ -16,10 +18,11 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
      */
     public PFTraCuuBaiXe() {
         initComponents();
-        setSize(1040,545);
-               LoadForm();
+        setSize(1040, 545);
+        LoadForm();
     }
-   private void LoadForm() {
+
+    private void LoadForm() {
         TraCuuBaiXeDAO tx = new TraCuuBaiXeDAO();
 
         txtTongXM.setText(tx.XeMayTong());
@@ -27,13 +30,14 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtXMB.setText(tx.XeMayB());
         txtXMC.setText(tx.XeMayC());
         txtXMD.setText(tx.XeMayD());
-        
+
         txtTongOTo.setText(tx.OTOTong());
         txtOTE.setText(tx.OTOE());
         txtConTrongE.setText(tx.OTOConLaiE());
         txtOTF.setText(tx.OTOF());
         txtConTrongF.setText(tx.OTOConLaiF());
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,11 +127,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtXMB.setEnabled(false);
         txtXMB.setFocusable(false);
         txtXMB.setName("txtXeMayB"); // NOI18N
-        txtXMB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtXMBActionPerformed(evt);
-            }
-        });
 
         txtXMD.setBackground(new java.awt.Color(153, 153, 153));
         txtXMD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -137,11 +136,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtXMD.setEnabled(false);
         txtXMD.setFocusable(false);
         txtXMD.setName("txtXeMayD"); // NOI18N
-        txtXMD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtXMDActionPerformed(evt);
-            }
-        });
 
         txtTongXM.setBackground(new java.awt.Color(153, 153, 153));
         txtTongXM.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -151,11 +145,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtTongXM.setEnabled(false);
         txtTongXM.setFocusable(false);
         txtTongXM.setName("txtTongXeMay"); // NOI18N
-        txtTongXM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTongXMActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -254,11 +243,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtOTE.setEnabled(false);
         txtOTE.setFocusable(false);
         txtOTE.setName("txtOToE"); // NOI18N
-        txtOTE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOTEActionPerformed(evt);
-            }
-        });
 
         txtOTF.setBackground(new java.awt.Color(153, 153, 153));
         txtOTF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -277,11 +261,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtConTrongE.setEnabled(false);
         txtConTrongE.setFocusable(false);
         txtConTrongE.setName("txtConLaiE"); // NOI18N
-        txtConTrongE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConTrongEActionPerformed(evt);
-            }
-        });
 
         txtConTrongF.setBackground(new java.awt.Color(153, 153, 153));
         txtConTrongF.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -291,11 +270,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtConTrongF.setEnabled(false);
         txtConTrongF.setFocusable(false);
         txtConTrongF.setName("txtConLaiF"); // NOI18N
-        txtConTrongF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConTrongFActionPerformed(evt);
-            }
-        });
 
         txtTongOTo.setBackground(new java.awt.Color(153, 153, 153));
         txtTongOTo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -305,11 +279,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
         txtTongOTo.setEnabled(false);
         txtTongOTo.setFocusable(false);
         txtTongOTo.setName("txtTongOTo"); // NOI18N
-        txtTongOTo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTongOToActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -408,34 +377,6 @@ public class PFTraCuuBaiXe extends javax.swing.JPanel {
                 .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtXMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXMBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtXMBActionPerformed
-
-    private void txtXMDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtXMDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtXMDActionPerformed
-
-    private void txtTongXMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongXMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTongXMActionPerformed
-
-    private void txtConTrongEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConTrongEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConTrongEActionPerformed
-
-    private void txtConTrongFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConTrongFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConTrongFActionPerformed
-
-    private void txtTongOToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongOToActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTongOToActionPerformed
-
-    private void txtOTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOTEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOTEActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
