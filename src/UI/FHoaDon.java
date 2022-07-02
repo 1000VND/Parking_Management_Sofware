@@ -61,25 +61,32 @@ public class FHoaDon extends javax.swing.JFrame {
         String TuNgay = txtNgayNhan.getText();
         String DenNgay = txtNgayTra.getText();
         try {
-            if (txtLoaiXe.getText().trim().equals("Xe máy")) {
-                Date DNgaygui = sdf.parse(TuNgay);
-                Date DNgaytra = sdf.parse(DenNgay);
-                long ngayGui = DNgaygui.getTime();
-                long ngayTra = DNgaytra.getTime();
-                long soNgayMili = ngayTra - ngayGui;
-                long soNgay = soNgayMili / (24 * 60 * 60 * 1000);
-                long tongTien = (soNgay + 1) * 5000;
-                txtThanhTien.setText(String.valueOf(tongTien));
-            } else if (txtLoaiXe.getText().trim().equals("Ô tô")) {
-                Date DNgaygui = sdf.parse(TuNgay);
-                Date DNgaytra = sdf.parse(DenNgay);
-                long ngayGui = DNgaygui.getTime();
-                long ngayTra = DNgaytra.getTime();
-                long soNgayMili = ngayTra - ngayGui;
-                long soNgay = soNgayMili / (24 * 60 * 60 * 1000);
-                long tongTien = (soNgay + 1) * 20000;
-                txtThanhTien.setText(String.valueOf(tongTien));
+            if (txtMaVe.getText().contains("VT") == false) {
+                txtLoaiVe.setText("Vé Ngày");
+                if (txtLoaiXe.getText().trim().equals("Xe máy")) {
+                    Date DNgaygui = sdf.parse(TuNgay);
+                    Date DNgaytra = sdf.parse(DenNgay);
+                    long ngayGui = DNgaygui.getTime();
+                    long ngayTra = DNgaytra.getTime();
+                    long soNgayMili = ngayTra - ngayGui;
+                    long soNgay = soNgayMili / (24 * 60 * 60 * 1000);
+                    long tongTien = (soNgay + 1) * 5000;
+                    txtThanhTien.setText(String.valueOf(tongTien));
+                } else if (txtLoaiXe.getText().trim().equals("Ô tô")) {
+                    Date DNgaygui = sdf.parse(TuNgay);
+                    Date DNgaytra = sdf.parse(DenNgay);
+                    long ngayGui = DNgaygui.getTime();
+                    long ngayTra = DNgaytra.getTime();
+                    long soNgayMili = ngayTra - ngayGui;
+                    long soNgay = soNgayMili / (24 * 60 * 60 * 1000);
+                    long tongTien = (soNgay + 1) * 20000;
+                    txtThanhTien.setText(String.valueOf(tongTien));
+                }
+            } else {
+                txtLoaiVe.setText("Vé Tháng");
+                txtThanhTien.setText("0");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,7 +96,6 @@ public class FHoaDon extends javax.swing.JFrame {
         try {
             TraXeDAO tx = new TraXeDAO();
             NhapXeDTO nx = tx.findXebyMave(mave);
-
             if (nx != null) {
                 txtBienSo.setText(nx.getBienSo());
                 txtMauXe.setText(nx.getMauXe());
@@ -99,13 +105,7 @@ public class FHoaDon extends javax.swing.JFrame {
                 txtViTri.setText(nx.getViTri());
                 txtNgayNhan.setText(nx.getNgayGui().toString());
                 txtGioNhan.setText(nx.getGioGui());
-                if (txtMaVe.getText().contains("VT") == false) {
-                    txtLoaiVe.setText("Vé Ngày");
 
-                } else {
-                    txtLoaiVe.setText("Vé Tháng");
-                    txtThanhTien.setText("0");
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -161,6 +161,7 @@ public class NhapXeDAO extends KetNoiDAO {
         }
         return b;
     }
+    
     public NhapXeDTO checkVe(String mave) {
         NhapXeDTO tk = null;
         try {

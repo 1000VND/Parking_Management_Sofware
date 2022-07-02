@@ -5,6 +5,7 @@
 package UI;
 
 import DAO.DangKyVeThangDAO;
+import DAO.NhapXeDAO;
 import DTO.DKVeThangDTO;
 import DTO.TongVeDTO;
 import java.text.SimpleDateFormat;
@@ -462,7 +463,6 @@ public class PFDKiVeThang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemVTActionPerformed
 
     private void btnCapNhatVTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatVTActionPerformed
-        // TODO add your handling code here:
         try {
             String mave = txtMaVe.getText();
             String tenkh = txtName.getText();
@@ -484,10 +484,9 @@ public class PFDKiVeThang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Không được để trống màu xe");
             } else {
                 DangKyVeThangDAO dkvt = new DangKyVeThangDAO();
-                int update = dkvt.updateVethang(mave, tenkh, sdt, bienso, loaixe, mauxe);
-                int updatetongvethang = dkvt.updateTongvethang(mave, tenkh, sdt, bienso, loaixe, mauxe);
-                if (update > 0 && updatetongvethang > 0) {
-                    JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
+                NhapXeDAO checkBien = new NhapXeDAO();
+                if (checkBien.checkBien(bienso) != null) {
+                    JOptionPane.showMessageDialog(this, "Xe hiện đang trong bãi. Không thể cập nhật");
                     txtMaVe.setText("");
                     txtName.setText("");
                     txtSDT.setText("");
@@ -496,7 +495,31 @@ public class PFDKiVeThang extends javax.swing.JPanel {
                     txtMauXe.setText("");
                     loadTable();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Cập nhật thất bại!");
+                    if (dkvt.checkVe(mave) != null) {
+                        JOptionPane.showMessageDialog(this, "Không thể cập nhật vì mã vé đã tồn tại");
+                        txtMaVe.setText("");
+                        txtName.setText("");
+                        txtSDT.setText("");
+                        txtLoaiXe.setText("");
+                        txtBienSo.setText("");
+                        txtMauXe.setText("");
+                        loadTable();
+                    } else {
+                        int update = dkvt.updateVethang(mave, tenkh, sdt, bienso, loaixe, mauxe);
+                        int updatetongvethang = dkvt.updateTongvethang(mave, tenkh, sdt, bienso, loaixe, mauxe);
+                        if (update > 0 && updatetongvethang > 0) {
+                            JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
+                            txtMaVe.setText("");
+                            txtName.setText("");
+                            txtSDT.setText("");
+                            txtLoaiXe.setText("");
+                            txtBienSo.setText("");
+                            txtMauXe.setText("");
+                            loadTable();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Cập nhật thất bại!");
+                        }
+                    }
                 }
             }
 

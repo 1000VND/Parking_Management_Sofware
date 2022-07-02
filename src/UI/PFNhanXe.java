@@ -446,7 +446,7 @@ public class PFNhanXe extends javax.swing.JPanel {
             } else if (cbxLoaive.getSelectedItem().toString().equals("Vé Tháng")) {
                 if (cbxLoaiXe.getSelectedItem().toString().equals("Ô tô")) {
                     cbxLoaiXe.setEnabled(false);
-                    cbxKhuVuc.setEnabled(false);
+                    cbxKhuVuc.setEnabled(true);
                     txtBienso.setEnabled(false);
                     txtMauxe.setEnabled(false);
                     txtBienso.setDisabledTextColor(Color.black);
@@ -458,7 +458,7 @@ public class PFNhanXe extends javax.swing.JPanel {
                     loadcbxViTri(loaive);
                 } else if (cbxLoaiXe.getSelectedItem().toString().equals("Xe máy")) {
                     cbxLoaiXe.setEnabled(false);
-                    cbxKhuVuc.setEnabled(false);
+                    cbxKhuVuc.setEnabled(true);
                     txtBienso.setEnabled(false);
                     txtMauxe.setEnabled(false);
                     txtBienso.setDisabledTextColor(Color.black);

@@ -24,6 +24,7 @@ public class FDoiMatKhau extends javax.swing.JFrame {
         initComponents();
         setSize(1270, 720);
         setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
 
     }
