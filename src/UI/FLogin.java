@@ -24,7 +24,7 @@ public class FLogin extends javax.swing.JFrame {
     public FLogin() {
         initComponents();
         setSize(1270, 720);
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
         this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
     }
 
