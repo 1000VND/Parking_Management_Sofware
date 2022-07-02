@@ -402,7 +402,6 @@ public class PFDKiVeThang extends javax.swing.JPanel {
     }//GEN-LAST:event_txtLoaiXeActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        // TODO add your handling code here:
         txtMaVe.setText("");
         txtName.setText("");
         txtSDT.setText("");
@@ -443,7 +442,6 @@ public class PFDKiVeThang extends javax.swing.JPanel {
                         FVeThang form = new FVeThang(checkVe);
                         form.show();
                         form.setVisible(true);
-
                         txtMaVe.setText("");
                         txtName.setText("");
                         txtSDT.setText("");
@@ -458,8 +456,6 @@ public class PFDKiVeThang extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        new FVeThang().setVisible(true);
     }//GEN-LAST:event_btnThemVTActionPerformed
 
     private void btnCapNhatVTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatVTActionPerformed
@@ -552,7 +548,6 @@ public class PFDKiVeThang extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-// TODO add your handling code here:
     }//GEN-LAST:event_btnXoaVTActionPerformed
 
 

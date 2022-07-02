@@ -424,6 +424,10 @@ public class PFQuanLyNhanVien extends javax.swing.JPanel {
         DangNhapDAO dn = new DangNhapDAO();
         if (txtTimkiem.getText().contains("Nhập tài khoản...") == true) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập tài khoản cần tìm");
+        } else if (txtTimkiem.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tài khoản cần tìm");
+            txtTimkiem.setText("Nhập tài khoản...");
+            txtTimkiem.setForeground(new Color(153, 153, 153));
         } else {
             AccountDTO ac = dn.findAccbyTaikhoan(txtTimkiem.getText());
             for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
