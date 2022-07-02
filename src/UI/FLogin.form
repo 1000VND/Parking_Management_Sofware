@@ -68,7 +68,7 @@
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtUserName" alignment="0" pref="203" max="32767" attributes="0"/>
                                   <Component id="txtPassWord" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel6" max="32767" attributes="0"/>
+                                  <Component id="lbTaikhoan" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -76,7 +76,7 @@
                           <EmptySpace min="0" pref="89" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btnDangNhap" min="-2" pref="203" max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" pref="203" max="-2" attributes="0"/>
+                              <Component id="lbMatkhau" min="-2" pref="203" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -109,18 +109,18 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtUserName" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="lbTaikhoan" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtPassWord" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" pref="15" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="lbMatkhau" min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="btnQuenMK" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="btnDangNhap" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace pref="177" max="32767" attributes="0"/>
+                  <EmptySpace pref="188" max="32767" attributes="0"/>
                   <Component id="btnThoat" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
@@ -147,7 +147,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n"/>
           </Properties>
@@ -170,7 +170,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u"/>
           </Properties>
@@ -254,9 +254,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThoatActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="lbTaikhoan">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="lbMatkhau">
           <Properties>
             <Property name="name" type="java.lang.String" value="lbPassWord" noResource="true"/>
           </Properties>

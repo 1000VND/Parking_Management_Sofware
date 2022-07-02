@@ -30,7 +30,8 @@ public class FHoaDon extends javax.swing.JFrame {
     public FHoaDon(String mave) {
         initComponents();
         setSize(1270, 720);
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
         loadHoaDon(mave);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         autoDate();

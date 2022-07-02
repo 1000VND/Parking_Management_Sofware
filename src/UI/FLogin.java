@@ -25,6 +25,7 @@ public class FLogin extends javax.swing.JFrame {
         initComponents();
         setSize(1270, 720);
         setLocationRelativeTo(this);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
     }
 
     /**
@@ -46,8 +47,8 @@ public class FLogin extends javax.swing.JFrame {
         btnQuenMK = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbTaikhoan = new javax.swing.JLabel();
+        lbMatkhau = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -66,7 +67,7 @@ public class FLogin extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/icons8_user_50px.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tài Khoản");
 
         txtUserName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -83,7 +84,7 @@ public class FLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Mật Khẩu");
 
         txtPassWord.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -139,7 +140,7 @@ public class FLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setName("lbPassWord"); // NOI18N
+        lbMatkhau.setName("lbPassWord"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,12 +157,12 @@ public class FLogin extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                                 .addComponent(txtPassWord, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(lbTaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 89, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lbMatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(90, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,18 +187,18 @@ public class FLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
+                .addComponent(lbMatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(btnQuenMK)
                 .addGap(50, 50, 50)
                 .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
         );
@@ -246,22 +247,21 @@ public class FLogin extends javax.swing.JFrame {
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         try {
             if (txtUserName.getText().equals("") && txtPassWord.getText().equals("")) {
-                jLabel6.setText("*Chưa nhập tài khoản.");
-                txtUserName.setForeground(Color.red);
-                jLabel7.setText("*Chưa nhập mật khẩu.");
-                jLabel7.setForeground(Color.red);
-//                jLabel7   .setForeground(new Color(255,0,0));
+                lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                lbTaikhoan.setForeground(Color.red);
+                lbMatkhau.setText("*Chưa nhập mật khẩu.");
+                lbMatkhau.setForeground(Color.red);
                 Border RedLine = BorderFactory.createLineBorder(Color.red);
                 txtUserName.setBorder(RedLine);
                 txtPassWord.setBorder(RedLine);
             } else if (txtUserName.getText().equals("")) {
-                jLabel6.setText("*Chưa nhập tài khoản.");
-                jLabel6.setForeground(Color.red);
+                lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                lbTaikhoan.setForeground(Color.red);
                 Border RedLine = BorderFactory.createLineBorder(Color.red);
                 txtUserName.setBorder(RedLine);
             } else if (txtPassWord.getText().equals("")) {
-                jLabel7.setText("*Chưa nhập mật khẩu.");
-                jLabel7.setForeground(Color.red);
+                lbMatkhau.setText("*Chưa nhập mật khẩu.");
+                lbMatkhau.setForeground(Color.red);
                 Border RedLine = BorderFactory.createLineBorder(Color.red);
                 txtPassWord.setBorder(RedLine);
             } else {
@@ -274,9 +274,9 @@ public class FLogin extends javax.swing.JFrame {
                     this.dispose();
                 } else {
                     if (tk == null) {
-                        jLabel6.setText("*Tài khoản không tồn tại");
+                        lbTaikhoan.setText("*Tài khoản không tồn tại");
                         txtUserName.setText("");
-                        jLabel6.setForeground(Color.red);
+                        lbTaikhoan.setForeground(Color.red);
                         Border RedLine = BorderFactory.createLineBorder(Color.red);
                         txtUserName.setBorder(RedLine);
                     } else {
@@ -285,9 +285,9 @@ public class FLogin extends javax.swing.JFrame {
                             new FMenuStaff(txtUserName.getText()).setVisible(true);
                             this.dispose();
                         } else {
-                            jLabel7.setText("*Mật khẩu không đúng");
+                            lbMatkhau.setText("*Mật khẩu không đúng");
                             txtPassWord.setText("");
-                            jLabel7.setForeground(Color.red);
+                            lbMatkhau.setForeground(Color.red);
                             Border RedLine = BorderFactory.createLineBorder(Color.red);
                             txtPassWord.setBorder(RedLine);
                         }
@@ -297,13 +297,9 @@ public class FLogin extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        new A_FMenuStaff().setVisible(true);
-//        this.dispose();
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        // TODO add your handling code here:
         int exit = JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát ứng dụng không", "Thông báo!", JOptionPane.YES_NO_OPTION);
         if (exit != JOptionPane.YES_OPTION) {
         } else {
@@ -312,40 +308,39 @@ public class FLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThoatActionPerformed
 
     private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
-        // TODO add your handling code here:
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 if (txtUserName.getText().equals("") && txtPassWord.getText().equals("")) {
-                    jLabel6.setText("*Chưa nhập tài khoản.");
-                    jLabel6.setForeground(Color.red);
-                    jLabel7.setText("*Chưa nhập mật khẩu.");
-                    jLabel7.setForeground(Color.red);
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
+                    lbMatkhau.setText("*Chưa nhập mật khẩu.");
+                    lbMatkhau.setForeground(Color.red);
                     Border RedLine = BorderFactory.createLineBorder(Color.red);
                     txtUserName.setBorder(RedLine);
                     txtPassWord.setBorder(RedLine);
                 } else if (txtUserName.getText().equals("")) {
-                    jLabel6.setText("*Chưa nhập tài khoản.");
-                    jLabel6.setForeground(Color.red);
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
                     Border RedLine = BorderFactory.createLineBorder(Color.red);
                     txtUserName.setBorder(RedLine);
                 } else if (txtPassWord.getText().equals("")) {
-                    jLabel7.setText("*Chưa nhập mật khẩu.");
-                    jLabel7.setForeground(Color.red);
+                    lbMatkhau.setText("*Chưa nhập mật khẩu.");
+                    lbMatkhau.setForeground(Color.red);
                     Border RedLine = BorderFactory.createLineBorder(Color.red);
                     txtPassWord.setBorder(RedLine);
                 } else {
                     DangNhapDAO dn = new DangNhapDAO();
                     AccountDTO tk = dn.CheckUser(txtUserName.getText());
                     AccountDTO tk1 = dn.CheckPass(txtPassWord.getText(), txtUserName.getText());
-
                     if (txtUserName.getText().equals("admin") && txtPassWord.getText().equals("admin")) {
+                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công, bạn là admin");
                         new FMenuManager(txtUserName.getText()).setVisible(true);
                         this.dispose();
                     } else {
                         if (tk == null) {
-                            jLabel6.setText("*Tài khoản không tồn tại");
+                            lbTaikhoan.setText("*Tài khoản không tồn tại");
                             txtUserName.setText("");
-                            jLabel6.setForeground(Color.red);
+                            lbTaikhoan.setForeground(Color.red);
                             Border RedLine = BorderFactory.createLineBorder(Color.red);
                             txtUserName.setBorder(RedLine);
                         } else {
@@ -354,9 +349,9 @@ public class FLogin extends javax.swing.JFrame {
                                 new FMenuStaff(txtUserName.getText()).setVisible(true);
                                 this.dispose();
                             } else {
-                                jLabel7.setText("*Mật khẩu không đúng");
+                                lbMatkhau.setText("*Mật khẩu không đúng");
                                 txtPassWord.setText("");
-                                jLabel7.setForeground(Color.red);
+                                lbMatkhau.setForeground(Color.red);
                                 Border RedLine = BorderFactory.createLineBorder(Color.red);
                                 txtPassWord.setBorder(RedLine);
                             }
@@ -370,47 +365,44 @@ public class FLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserNameKeyPressed
 
     private void txtUserNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserNameMouseClicked
-        // TODO add your handling code here:
-           jLabel6.setText("");
+        lbTaikhoan.setText("");
         txtUserName.setBorder(null);
     }//GEN-LAST:event_txtUserNameMouseClicked
 
     private void txtPassWordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassWordKeyPressed
-        // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 if (txtUserName.getText().equals("") && txtPassWord.getText().equals("")) {
-                    jLabel6.setText("*Chưa nhập tài khoản.");
-                    jLabel6.setForeground(Color.red);
-                    jLabel7.setText("*Chưa nhập mật khẩu.");
-                    jLabel7.setForeground(Color.red);
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
+                    lbMatkhau.setText("*Chưa nhập mật khẩu.");
+                    lbMatkhau.setForeground(Color.red);
                     Border RedLine = BorderFactory.createLineBorder(Color.red);
                     txtUserName.setBorder(RedLine);
                     txtPassWord.setBorder(RedLine);
-                    //JOptionPane.showMessageDialog(rootPane, "Chưa nhập tên đăng nhập và mật khẩu!");
                 } else if (txtUserName.getText().equals("")) {
-                    jLabel6.setText("*Chưa nhập tài khoản.");
-                    jLabel6.setForeground(Color.red);
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
                     Border RedLine = BorderFactory.createLineBorder(Color.red);
                     txtUserName.setBorder(RedLine);
                 } else if (txtPassWord.getText().equals("")) {
-                    jLabel7.setText("*Chưa nhập mật khẩu.");
-                    jLabel7.setForeground(Color.red);
+                    lbMatkhau.setText("*Chưa nhập mật khẩu.");
+                    lbMatkhau.setForeground(Color.red);
                     Border RedLine = BorderFactory.createLineBorder(Color.red);
                     txtPassWord.setBorder(RedLine);
                 } else {
                     DangNhapDAO dn = new DangNhapDAO();
                     AccountDTO tk = dn.CheckUser(txtUserName.getText());
                     AccountDTO tk1 = dn.CheckPass(txtPassWord.getText(), txtUserName.getText());
-
                     if (txtUserName.getText().equals("admin") && txtPassWord.getText().equals("admin")) {
+                        JOptionPane.showMessageDialog(this, "Đăng nhập thành công, bạn là admin");
                         new FMenuManager(txtUserName.getText()).setVisible(true);
                         this.dispose();
                     } else {
                         if (tk == null) {
-                            jLabel6.setText("*Tài khoản không tồn tại");
+                            lbTaikhoan.setText("*Tài khoản không tồn tại");
                             txtUserName.setText("");
-                            jLabel6.setForeground(Color.red);
+                            lbTaikhoan.setForeground(Color.red);
                             Border RedLine = BorderFactory.createLineBorder(Color.red);
                             txtUserName.setBorder(RedLine);
                         } else {
@@ -419,9 +411,9 @@ public class FLogin extends javax.swing.JFrame {
                                 new FMenuStaff(txtUserName.getText()).setVisible(true);
                                 this.dispose();
                             } else {
-                                jLabel7.setText("*Mật khẩu không đúng");
+                                lbMatkhau.setText("*Mật khẩu không đúng");
                                 txtPassWord.setText("");
-                                jLabel7.setForeground(Color.red);
+                                lbMatkhau.setForeground(Color.red);
                                 Border RedLine = BorderFactory.createLineBorder(Color.red);
                                 txtPassWord.setBorder(RedLine);
                             }
@@ -435,8 +427,7 @@ public class FLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassWordKeyPressed
 
     private void txtPassWordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPassWordMouseClicked
-        // TODO add your handling code here:
-            jLabel7.setText("");
+        lbMatkhau.setText("");
         txtPassWord.setBorder(null);
     }//GEN-LAST:event_txtPassWordMouseClicked
 
@@ -483,11 +474,11 @@ public class FLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbMatkhau;
+    private javax.swing.JLabel lbTaikhoan;
     private javax.swing.JPasswordField txtPassWord;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables

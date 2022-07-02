@@ -26,7 +26,8 @@ public class FMenuManager extends javax.swing.JFrame {
     public FMenuManager(String user) {
         initComponents();
         setSize(1270, 720);
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
         xinchao(user);
         btnQuanLyNhanVien.setMnemonic(KeyEvent.VK_1);
         btnQuanLyBaiXe.setMnemonic(KeyEvent.VK_2);
@@ -382,13 +383,11 @@ public class FMenuManager extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuanLyBaiXeActionPerformed
 
     private void btnThoatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnThoatKeyPressed
-        // TODO add your handling code here:
         new FLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnThoatKeyPressed
 
     private void btnThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseClicked
-        // TODO add your handling code here:
         new FLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnThoatMouseClicked

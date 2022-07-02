@@ -26,7 +26,8 @@ public class FMenuStaff extends javax.swing.JFrame {
     public FMenuStaff(String user) {
         initComponents();
         setSize(1270, 720);
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
         xinchao(user);
         btnNhanXe.setMnemonic(KeyEvent.VK_1);
         btnTraXe.setMnemonic(KeyEvent.VK_2);

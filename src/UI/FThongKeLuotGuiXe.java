@@ -4,7 +4,6 @@
  */
 package UI;
 
-
 import DAO.ThongKeDAO;
 import DAO.TongXeDAO;
 import DTO.TongXeDTO;
@@ -36,13 +35,15 @@ public class FThongKeLuotGuiXe extends javax.swing.JFrame {
         initComponents();
         setSize(1270, 720);
         setLocationRelativeTo(null);
-          this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         showTable();
         loadCountAll();
         loadAll();
         loadMoneyAll();
     }
- private void showTable() {
+
+    private void showTable() {
         tblModel.setColumnIdentifiers(new String[]{"Biển Số Xe", "Loại Xe", "Loại Vé", "Mã Vé", "Màu Xe", "Khu Vực", "Vị Trí", "Ngày Nhận", "Giờ Nhận", "Ngày Trả", "Giờ Trả", "Số Tiền"});
         TableLuotGuiXe.setModel(tblModel);
     }
@@ -160,6 +161,7 @@ public class FThongKeLuotGuiXe extends javax.swing.JFrame {
             tblModel.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -413,8 +415,8 @@ public class FThongKeLuotGuiXe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQuayLaiActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-              SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-      
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
         if (tuNgay.getDate() == null && denNgay.getDate() == null) {
 
             JOptionPane.showMessageDialog(this, "Chưa nhập thời gian");
@@ -425,8 +427,8 @@ public class FThongKeLuotGuiXe extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Chưa nhập ngày kết thúc");
         } else {
-              String TuNgay = sdf.format(tuNgay.getDate());
-        String DenNgay = sdf.format(denNgay.getDate());
+            String TuNgay = sdf.format(tuNgay.getDate());
+            String DenNgay = sdf.format(denNgay.getDate());
             if (cbxLoaixe.getSelectedItem().toString().equals("Tổng xe")) {
                 findAll(TuNgay, DenNgay);
                 loadCountTimeAll();
@@ -441,7 +443,7 @@ public class FThongKeLuotGuiXe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnLammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLammoiActionPerformed
-         tuNgay.setDate(null);
+        tuNgay.setDate(null);
         denNgay.setDate(null);
         loadMoneyAll();
         loadCountAll();

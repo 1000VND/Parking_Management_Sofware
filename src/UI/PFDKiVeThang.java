@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
+
 import DAO.DangKyVeThangDAO;
 import DTO.DKVeThangDTO;
 import DTO.TongVeDTO;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
@@ -25,11 +27,12 @@ public class PFDKiVeThang extends javax.swing.JPanel {
      */
     public PFDKiVeThang() {
         initComponents();
-        setSize(1040,545);
-              showTable();
+        setSize(1040, 545);
+        showTable();
         loadTable();
     }
- private void showTable() {
+
+    private void showTable() {
         DefaultTableModel tblModel = new DefaultTableModel();
         tblModel.setColumnIdentifiers(new String[]{"Mã Vé", "Tên Khách Hàng", "Số Điện Thoại", "Biển Số Xe", "Loại Xe", "Màu Xe", "Ngày Đăng Ký"});
         TableTTVeThang.setModel(tblModel);
@@ -101,6 +104,7 @@ public class PFDKiVeThang extends javax.swing.JPanel {
         }
         return ac;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -398,7 +402,7 @@ public class PFDKiVeThang extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-           txtMaVe.setText("");
+        txtMaVe.setText("");
         txtName.setText("");
         txtSDT.setText("");
         txtLoaiXe.setText("");
@@ -453,7 +457,7 @@ public class PFDKiVeThang extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
 //        new FVeThang().setVisible(true);
     }//GEN-LAST:event_btnThemVTActionPerformed
 
@@ -482,7 +486,7 @@ public class PFDKiVeThang extends javax.swing.JPanel {
                 DangKyVeThangDAO dkvt = new DangKyVeThangDAO();
                 int update = dkvt.updateVethang(mave, tenkh, sdt, bienso, loaixe, mauxe);
                 int updatetongvethang = dkvt.updateTongvethang(mave, tenkh, sdt, bienso, loaixe, mauxe);
-                if (update > 0 && updatetongvethang>0) {
+                if (update > 0 && updatetongvethang > 0) {
                     JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
                     txtMaVe.setText("");
                     txtName.setText("");

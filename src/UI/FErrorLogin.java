@@ -22,8 +22,9 @@ public class FErrorLogin extends javax.swing.JFrame {
      */
     public FErrorLogin() {
         initComponents();
-        setSize(1270,720);
-        setLocationRelativeTo(this);
+        setSize(1270, 720);
+        setLocationRelativeTo(null);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
     }
 
     /**
@@ -232,14 +233,14 @@ public class FErrorLogin extends javax.swing.JFrame {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-         txtTaikhoan.setText("");
+        txtTaikhoan.setText("");
         txtSDT.setText("");
         lbPass.setText("");
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnXacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXacNhanActionPerformed
         // TODO add your handling code here:
-             if (txtTaikhoan.getText().equals("") && txtSDT.getText().equals("")) {
+        if (txtTaikhoan.getText().equals("") && txtSDT.getText().equals("")) {
             lbUser.setText("*Chưa nhập tài khoản.");
             lbUser.setForeground(Color.red);
             lbSDT.setText("*Chưa nhập số điện thoại.");
@@ -260,7 +261,7 @@ public class FErrorLogin extends javax.swing.JFrame {
         } else {
             DangNhapDAO dn = new DangNhapDAO();
             AccountDTO tk = dn.CheckUser(txtTaikhoan.getText());
-            AccountDTO tk1 = dn.CheckPhone(txtSDT.getText(),txtTaikhoan.getText());
+            AccountDTO tk1 = dn.CheckPhone(txtSDT.getText(), txtTaikhoan.getText());
             if (tk == null) {
                 lbUser.setText("*Tài khoản không tồn tại");
                 lbUser.setForeground(Color.red);
@@ -284,16 +285,14 @@ public class FErrorLogin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnXacNhanActionPerformed
-                                    
 
- 
+
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         new FLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnDangNhapActionPerformed
-                                  
 
-                            
+
     private void lbPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lbPassActionPerformed
@@ -322,7 +321,7 @@ public class FErrorLogin extends javax.swing.JFrame {
             } else {
                 DangNhapDAO dn = new DangNhapDAO();
                 AccountDTO tk = dn.CheckUser(txtTaikhoan.getText());
-                AccountDTO tk1 = dn.CheckPhone(txtSDT.getText(),txtTaikhoan.getText());
+                AccountDTO tk1 = dn.CheckPhone(txtSDT.getText(), txtTaikhoan.getText());
                 if (tk == null) {
                     lbUser.setText("*Tài khoản không tồn tại");
                     lbUser.setForeground(Color.red);
@@ -376,7 +375,7 @@ public class FErrorLogin extends javax.swing.JFrame {
             } else {
                 DangNhapDAO dn = new DangNhapDAO();
                 AccountDTO tk = dn.CheckUser(txtTaikhoan.getText());
-                AccountDTO tk1 = dn.CheckPhone(txtSDT.getText(),txtTaikhoan.getText());
+                AccountDTO tk1 = dn.CheckPhone(txtSDT.getText(), txtTaikhoan.getText());
                 if (tk == null) {
                     lbUser.setText("*Tài khoản không tồn tại");
                     lbUser.setForeground(Color.red);
@@ -402,7 +401,7 @@ public class FErrorLogin extends javax.swing.JFrame {
 
     private void txtSDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSDTMouseClicked
         // TODO add your handling code here:
-               lbSDT.setText("");
+        lbSDT.setText("");
         txtSDT.setBorder(null);
     }//GEN-LAST:event_txtSDTMouseClicked
 

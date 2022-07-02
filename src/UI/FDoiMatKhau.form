@@ -49,28 +49,27 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="lbMatkhaumoi" max="32767" attributes="0"/>
+                      <Component id="lbTaikhoan" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="btnDoi" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace pref="85" max="32767" attributes="0"/>
                           <Component id="btnTroLai" min="-2" pref="95" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtMatkhaunew" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtMatkhauold" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtMatkhaumoi" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtMatkhaucu" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtTaikhoan" alignment="1" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="txtMatkhauc" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtXacnhan" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lbMatkhaucu" alignment="1" max="32767" attributes="0"/>
+                      <Component id="lbXacnhan" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel4" max="32767" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="76" pref="76" max="-2" attributes="0"/>
               </Group>
@@ -81,22 +80,30 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtTaikhoan" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                  <Component id="lbTaikhoan" min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtMatkhauold" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="txtMatkhaucu" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="lbMatkhaucu" min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtMatkhaunew" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="txtMatkhaumoi" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="lbMatkhaumoi" min="-2" pref="15" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtMatkhauc" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtXacnhan" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="lbXacnhan" min="-2" pref="15" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnDoi" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -116,7 +123,8 @@
             <Property name="name" type="java.lang.String" value="txtTK" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTaikhoanActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTaikhoanMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTaikhoanKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnTroLai">
@@ -165,15 +173,19 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoiActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMatkhauc">
+        <Component class="javax.swing.JTextField" name="txtXacnhan">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="name" type="java.lang.String" value="txtXacNhanMK" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtXacnhanMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtXacnhanKeyPressed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMatkhauold">
+        <Component class="javax.swing.JTextField" name="txtMatkhaucu">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -181,21 +193,26 @@
             <Property name="name" type="java.lang.String" value="txtMKcu" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMatkhauoldActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMatkhaucuMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMatkhaucuKeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMatkhaunew">
+        <Component class="javax.swing.JTextField" name="txtMatkhaumoi">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="name" type="java.lang.String" value="txtMKmoi" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtMatkhaumoiMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMatkhaumoiKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="X&#xe1;c Nh&#x1ead;n M&#x1ead;t Kh&#x1ea9;u"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -204,7 +221,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u M&#x1edb;i"/>
           </Properties>
@@ -212,7 +229,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M&#x1ead;t Kh&#x1ea9;u C&#x169;"/>
           </Properties>
@@ -220,7 +237,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="0"/>
+              <Font name="Segoe UI" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n"/>
           </Properties>
@@ -233,6 +250,14 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i M&#x1ead;t Kh&#x1ea9;u"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbTaikhoan">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbMatkhaucu">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbMatkhaumoi">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbXacnhan">
         </Component>
       </SubComponents>
     </Container>

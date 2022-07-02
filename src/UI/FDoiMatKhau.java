@@ -3,8 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+
 import DAO.DangNhapDAO;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+
 /**
  *
  * @author Admin
@@ -16,8 +22,10 @@ public class FDoiMatKhau extends javax.swing.JFrame {
      */
     public FDoiMatKhau() {
         initComponents();
-        setSize(1270,720);
-        setLocationRelativeTo(this);
+        setSize(1270, 720);
+        setLocationRelativeTo(null);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
+
     }
 
     /**
@@ -33,14 +41,18 @@ public class FDoiMatKhau extends javax.swing.JFrame {
         txtTaikhoan = new javax.swing.JTextField();
         btnTroLai = new javax.swing.JButton();
         btnDoi = new javax.swing.JButton();
-        txtMatkhauc = new javax.swing.JTextField();
-        txtMatkhauold = new javax.swing.JTextField();
-        txtMatkhaunew = new javax.swing.JTextField();
+        txtXacnhan = new javax.swing.JTextField();
+        txtMatkhaucu = new javax.swing.JTextField();
+        txtMatkhaumoi = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbTaikhoan = new javax.swing.JLabel();
+        lbMatkhaucu = new javax.swing.JLabel();
+        lbMatkhaumoi = new javax.swing.JLabel();
+        lbXacnhan = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,9 +62,14 @@ public class FDoiMatKhau extends javax.swing.JFrame {
 
         txtTaikhoan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTaikhoan.setName("txtTK"); // NOI18N
-        txtTaikhoan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTaikhoanActionPerformed(evt);
+        txtTaikhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTaikhoanMouseClicked(evt);
+            }
+        });
+        txtTaikhoan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTaikhoanKeyPressed(evt);
             }
         });
 
@@ -84,31 +101,56 @@ public class FDoiMatKhau extends javax.swing.JFrame {
             }
         });
 
-        txtMatkhauc.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtMatkhauc.setName("txtXacNhanMK"); // NOI18N
-
-        txtMatkhauold.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtMatkhauold.setName("txtMKcu"); // NOI18N
-        txtMatkhauold.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatkhauoldActionPerformed(evt);
+        txtXacnhan.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtXacnhan.setName("txtXacNhanMK"); // NOI18N
+        txtXacnhan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtXacnhanMouseClicked(evt);
+            }
+        });
+        txtXacnhan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtXacnhanKeyPressed(evt);
             }
         });
 
-        txtMatkhaunew.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtMatkhaunew.setName("txtMKmoi"); // NOI18N
+        txtMatkhaucu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtMatkhaucu.setName("txtMKcu"); // NOI18N
+        txtMatkhaucu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMatkhaucuMouseClicked(evt);
+            }
+        });
+        txtMatkhaucu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatkhaucuKeyPressed(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtMatkhaumoi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtMatkhaumoi.setName("txtMKmoi"); // NOI18N
+        txtMatkhaumoi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMatkhaumoiMouseClicked(evt);
+            }
+        });
+        txtMatkhaumoi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatkhaumoiKeyPressed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Xác Nhận Mật Khẩu");
         jLabel5.setToolTipText("");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Mật Khẩu Mới");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Mật Khẩu Cũ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Tài Khoản");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -119,25 +161,26 @@ public class FDoiMatKhau extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbMatkhaumoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbTaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                         .addComponent(btnTroLai, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtMatkhaunew)
-                    .addComponent(txtMatkhauold)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTaikhoan, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtMatkhauc))
+                    .addComponent(txtMatkhaumoi, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMatkhaucu, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTaikhoan)
+                    .addComponent(txtXacnhan, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbMatkhaucu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbXacnhan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(76, 76, 76))
         );
         jPanel1Layout.setVerticalGroup(
@@ -145,22 +188,30 @@ public class FDoiMatKhau extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jLabel1)
-                .addGap(100, 100, 100)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(lbTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatkhauold, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(txtMatkhaucu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lbMatkhaucu, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatkhaunew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(txtMatkhaumoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lbMatkhaumoi, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMatkhauc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtXacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lbXacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,63 +240,387 @@ public class FDoiMatKhau extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtTaikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaikhoanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTaikhoanActionPerformed
-
     private void btnTroLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTroLaiActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnTroLaiActionPerformed
 
     private void btnDoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiActionPerformed
-        // TODO add your handling code here:
-            try {
-            String pw = txtMatkhaunew.getText();
-            String cpw = txtMatkhauc.getText();
+        try {
+            String pw = txtMatkhaumoi.getText();
+            String cpw = txtXacnhan.getText();
             String taikhoan = txtTaikhoan.getText();
-            String mkold = txtMatkhauold.getText();
+            String mkold = txtMatkhaucu.getText();
             if (txtTaikhoan.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Chưa nhập mật khẩu cũ!");
-            } else if (txtMatkhaunew.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Nhập mật khẩu cần đổi!");
-            } else if (txtMatkhauc.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Vui lòng xác nhận mật khẩu mới!");
-            } else if (pw.equals(cpw)) {
-                if (txtTaikhoan.getText().equals("admin")) {
-                    JOptionPane.showMessageDialog(this, "Không thể đổi mật khẩu của admin");
-                    txtTaikhoan.setText("");
-                    txtMatkhaunew.setText("");
-                    txtMatkhauc.setText("");
-                    txtMatkhauold.setText("");
-                } else {
-                    DangNhapDAO dn = new DangNhapDAO();
-                    int doimaykhau = dn.DoiMK(taikhoan, pw, mkold);
-                    if (doimaykhau > 0) {
-                        JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
+                lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                lbTaikhoan.setForeground(Color.red);
+                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                txtTaikhoan.setBorder(RedLine);
+            }
+            if (txtMatkhaucu.getText().equals("")) {
+                lbMatkhaucu.setText("*Chưa nhập mật khẩu cũ.");
+                lbMatkhaucu.setForeground(Color.red);
+                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                txtMatkhaucu.setBorder(RedLine);
+            }
+            if (txtMatkhaumoi.getText().equals("")) {
+                lbMatkhaumoi.setText("*Chưa nhập mật khẩu mới.");
+                lbMatkhaumoi.setForeground(Color.red);
+                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                txtMatkhaumoi.setBorder(RedLine);
+            }
+            if (txtXacnhan.getText().equals("")) {
+                lbXacnhan.setText("*Chưa xác nhận mật khẩu.");
+                lbXacnhan.setForeground(Color.red);
+                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                txtXacnhan.setBorder(RedLine);
+            }
+            if (!txtTaikhoan.getText().equals("") && !txtMatkhaucu.getText().equals("") && !txtMatkhaumoi.getText().equals("") && !txtXacnhan.getText().equals("")) {
+                if (pw.equals(cpw)) {
+                    if (txtTaikhoan.getText().equals("admin")) {
+                        JOptionPane.showMessageDialog(this, "Không thể đổi mật khẩu của admin");
                         txtTaikhoan.setText("");
-                        txtMatkhaunew.setText("");
-                        txtMatkhauc.setText("");
-                        txtMatkhauold.setText("");
+                        txtMatkhaumoi.setText("");
+                        txtXacnhan.setText("");
+                        txtMatkhaucu.setText("");
                     } else {
-                        JOptionPane.showMessageDialog(this, "Mật khẩu cũ không đúng!");
+                        DangNhapDAO dn = new DangNhapDAO();
+                        int doimaykhau = dn.DoiMK(taikhoan, pw, mkold);
+                        if (doimaykhau > 0) {
+                            JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
+                            txtTaikhoan.setText("");
+                            txtMatkhaumoi.setText("");
+                            txtXacnhan.setText("");
+                            txtMatkhaucu.setText("");
+                        } else {
+                            lbMatkhaucu.setText("*Mật khẩu cũ không đúng.");
+                            lbMatkhaucu.setForeground(Color.red);
+                            Border RedLine = BorderFactory.createLineBorder(Color.red);
+                            txtMatkhaucu.setBorder(RedLine);
+                            txtMatkhaucu.setText("");
+                        }
                     }
+                } else {
+                    lbXacnhan.setText("*Xác nhận mật khẩu sai.");
+                    lbXacnhan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtXacnhan.setBorder(RedLine);
+                    txtMatkhaucu.setText("");
+                    txtMatkhaumoi.setText("");
+                    txtXacnhan.setText("");
                 }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Xác nhận mật khẩu sai!");
-                txtMatkhauold.setText("");
-                txtMatkhaunew.setText("");
-                txtMatkhauc.setText("");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-         
     }//GEN-LAST:event_btnDoiActionPerformed
 
-    private void txtMatkhauoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatkhauoldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatkhauoldActionPerformed
+    private void txtTaikhoanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTaikhoanKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String pw = txtMatkhaumoi.getText();
+                String cpw = txtXacnhan.getText();
+                String taikhoan = txtTaikhoan.getText();
+                String mkold = txtMatkhaucu.getText();
+                if (txtTaikhoan.getText().equals("")) {
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtTaikhoan.setBorder(RedLine);
+                }
+                if (txtMatkhaucu.getText().equals("")) {
+                    lbMatkhaucu.setText("*Chưa nhập mật khẩu cũ.");
+                    lbMatkhaucu.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaucu.setBorder(RedLine);
+                }
+                if (txtMatkhaumoi.getText().equals("")) {
+                    lbMatkhaumoi.setText("*Chưa nhập mật khẩu mới.");
+                    lbMatkhaumoi.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaumoi.setBorder(RedLine);
+                }
+                if (txtXacnhan.getText().equals("")) {
+                    lbXacnhan.setText("*Chưa xác nhận mật khẩu.");
+                    lbXacnhan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtXacnhan.setBorder(RedLine);
+                }
+                if (!txtTaikhoan.getText().equals("") && !txtMatkhaucu.getText().equals("") && !txtMatkhaumoi.getText().equals("") && !txtXacnhan.getText().equals("")) {
+                    if (pw.equals(cpw)) {
+                        if (txtTaikhoan.getText().equals("admin")) {
+                            JOptionPane.showMessageDialog(this, "Không thể đổi mật khẩu của admin");
+                            txtTaikhoan.setText("");
+                            txtMatkhaumoi.setText("");
+                            txtXacnhan.setText("");
+                            txtMatkhaucu.setText("");
+                        } else {
+                            DangNhapDAO dn = new DangNhapDAO();
+                            int doimaykhau = dn.DoiMK(taikhoan, pw, mkold);
+                            if (doimaykhau > 0) {
+                                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
+                                txtTaikhoan.setText("");
+                                txtMatkhaumoi.setText("");
+                                txtXacnhan.setText("");
+                                txtMatkhaucu.setText("");
+                            } else {
+                                lbMatkhaucu.setText("*Mật khẩu cũ không đúng.");
+                                lbMatkhaucu.setForeground(Color.red);
+                                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                                txtMatkhaucu.setBorder(RedLine);
+                                txtMatkhaucu.setText("");
+                            }
+                        }
+                    } else {
+                        lbXacnhan.setText("*Xác nhận mật khẩu sai.");
+                        lbXacnhan.setForeground(Color.red);
+                        Border RedLine = BorderFactory.createLineBorder(Color.red);
+                        txtXacnhan.setBorder(RedLine);
+                        txtMatkhaucu.setText("");
+                        txtMatkhaumoi.setText("");
+                        txtXacnhan.setText("");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtTaikhoanKeyPressed
+
+    private void txtMatkhaucuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatkhaucuKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String pw = txtMatkhaumoi.getText();
+                String cpw = txtXacnhan.getText();
+                String taikhoan = txtTaikhoan.getText();
+                String mkold = txtMatkhaucu.getText();
+                if (txtTaikhoan.getText().equals("")) {
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtTaikhoan.setBorder(RedLine);
+                }
+                if (txtMatkhaucu.getText().equals("")) {
+                    lbMatkhaucu.setText("*Chưa nhập mật khẩu cũ.");
+                    lbMatkhaucu.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaucu.setBorder(RedLine);
+                }
+                if (txtMatkhaumoi.getText().equals("")) {
+                    lbMatkhaumoi.setText("*Chưa nhập mật khẩu mới.");
+                    lbMatkhaumoi.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaumoi.setBorder(RedLine);
+                }
+                if (txtXacnhan.getText().equals("")) {
+                    lbXacnhan.setText("*Chưa xác nhận mật khẩu.");
+                    lbXacnhan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtXacnhan.setBorder(RedLine);
+                }
+                if (!txtTaikhoan.getText().equals("") && !txtMatkhaucu.getText().equals("") && !txtMatkhaumoi.getText().equals("") && !txtXacnhan.getText().equals("")) {
+                    if (pw.equals(cpw)) {
+                        if (txtTaikhoan.getText().equals("admin")) {
+                            JOptionPane.showMessageDialog(this, "Không thể đổi mật khẩu của admin");
+                            txtTaikhoan.setText("");
+                            txtMatkhaumoi.setText("");
+                            txtXacnhan.setText("");
+                            txtMatkhaucu.setText("");
+                        } else {
+                            DangNhapDAO dn = new DangNhapDAO();
+                            int doimaykhau = dn.DoiMK(taikhoan, pw, mkold);
+                            if (doimaykhau > 0) {
+                                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
+                                txtTaikhoan.setText("");
+                                txtMatkhaumoi.setText("");
+                                txtXacnhan.setText("");
+                                txtMatkhaucu.setText("");
+                            } else {
+                                lbMatkhaucu.setText("*Mật khẩu cũ không đúng.");
+                                lbMatkhaucu.setForeground(Color.red);
+                                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                                txtMatkhaucu.setBorder(RedLine);
+                                txtMatkhaucu.setText("");
+                            }
+                        }
+                    } else {
+                        lbXacnhan.setText("*Xác nhận mật khẩu sai.");
+                        lbXacnhan.setForeground(Color.red);
+                        Border RedLine = BorderFactory.createLineBorder(Color.red);
+                        txtXacnhan.setBorder(RedLine);
+                        txtMatkhaucu.setText("");
+                        txtMatkhaumoi.setText("");
+                        txtXacnhan.setText("");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtMatkhaucuKeyPressed
+
+    private void txtMatkhaumoiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatkhaumoiKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String pw = txtMatkhaumoi.getText();
+                String cpw = txtXacnhan.getText();
+                String taikhoan = txtTaikhoan.getText();
+                String mkold = txtMatkhaucu.getText();
+                if (txtTaikhoan.getText().equals("")) {
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtTaikhoan.setBorder(RedLine);
+                }
+                if (txtMatkhaucu.getText().equals("")) {
+                    lbMatkhaucu.setText("*Chưa nhập mật khẩu cũ.");
+                    lbMatkhaucu.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaucu.setBorder(RedLine);
+                }
+                if (txtMatkhaumoi.getText().equals("")) {
+                    lbMatkhaumoi.setText("*Chưa nhập mật khẩu mới.");
+                    lbMatkhaumoi.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaumoi.setBorder(RedLine);
+                }
+                if (txtXacnhan.getText().equals("")) {
+                    lbXacnhan.setText("*Chưa xác nhận mật khẩu.");
+                    lbXacnhan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtXacnhan.setBorder(RedLine);
+                }
+                if (!txtTaikhoan.getText().equals("") && !txtMatkhaucu.getText().equals("") && !txtMatkhaumoi.getText().equals("") && !txtXacnhan.getText().equals("")) {
+                    if (pw.equals(cpw)) {
+                        if (txtTaikhoan.getText().equals("admin")) {
+                            JOptionPane.showMessageDialog(this, "Không thể đổi mật khẩu của admin");
+                            txtTaikhoan.setText("");
+                            txtMatkhaumoi.setText("");
+                            txtXacnhan.setText("");
+                            txtMatkhaucu.setText("");
+                        } else {
+                            DangNhapDAO dn = new DangNhapDAO();
+                            int doimaykhau = dn.DoiMK(taikhoan, pw, mkold);
+                            if (doimaykhau > 0) {
+                                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
+                                txtTaikhoan.setText("");
+                                txtMatkhaumoi.setText("");
+                                txtXacnhan.setText("");
+                                txtMatkhaucu.setText("");
+                            } else {
+                                lbMatkhaucu.setText("*Mật khẩu cũ không đúng.");
+                                lbMatkhaucu.setForeground(Color.red);
+                                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                                txtMatkhaucu.setBorder(RedLine);
+                                txtMatkhaucu.setText("");
+                            }
+                        }
+                    } else {
+                        lbXacnhan.setText("*Xác nhận mật khẩu sai.");
+                        lbXacnhan.setForeground(Color.red);
+                        Border RedLine = BorderFactory.createLineBorder(Color.red);
+                        txtXacnhan.setBorder(RedLine);
+                        txtMatkhaucu.setText("");
+                        txtMatkhaumoi.setText("");
+                        txtXacnhan.setText("");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtMatkhaumoiKeyPressed
+
+    private void txtXacnhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtXacnhanKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+                String pw = txtMatkhaumoi.getText();
+                String cpw = txtXacnhan.getText();
+                String taikhoan = txtTaikhoan.getText();
+                String mkold = txtMatkhaucu.getText();
+                if (txtTaikhoan.getText().equals("")) {
+                    lbTaikhoan.setText("*Chưa nhập tài khoản.");
+                    lbTaikhoan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtTaikhoan.setBorder(RedLine);
+                }
+                if (txtMatkhaucu.getText().equals("")) {
+                    lbMatkhaucu.setText("*Chưa nhập mật khẩu cũ.");
+                    lbMatkhaucu.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaucu.setBorder(RedLine);
+                }
+                if (txtMatkhaumoi.getText().equals("")) {
+                    lbMatkhaumoi.setText("*Chưa nhập mật khẩu mới.");
+                    lbMatkhaumoi.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtMatkhaumoi.setBorder(RedLine);
+                }
+                if (txtXacnhan.getText().equals("")) {
+                    lbXacnhan.setText("*Chưa xác nhận mật khẩu.");
+                    lbXacnhan.setForeground(Color.red);
+                    Border RedLine = BorderFactory.createLineBorder(Color.red);
+                    txtXacnhan.setBorder(RedLine);
+                }
+                if (!txtTaikhoan.getText().equals("") && !txtMatkhaucu.getText().equals("") && !txtMatkhaumoi.getText().equals("") && !txtXacnhan.getText().equals("")) {
+                    if (pw.equals(cpw)) {
+                        if (txtTaikhoan.getText().equals("admin")) {
+                            JOptionPane.showMessageDialog(this, "Không thể đổi mật khẩu của admin");
+                            txtTaikhoan.setText("");
+                            txtMatkhaumoi.setText("");
+                            txtXacnhan.setText("");
+                            txtMatkhaucu.setText("");
+                        } else {
+                            DangNhapDAO dn = new DangNhapDAO();
+                            int doimaykhau = dn.DoiMK(taikhoan, pw, mkold);
+                            if (doimaykhau > 0) {
+                                JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
+                                txtTaikhoan.setText("");
+                                txtMatkhaumoi.setText("");
+                                txtXacnhan.setText("");
+                                txtMatkhaucu.setText("");
+                            } else {
+                                lbMatkhaucu.setText("*Mật khẩu cũ không đúng.");
+                                lbMatkhaucu.setForeground(Color.red);
+                                Border RedLine = BorderFactory.createLineBorder(Color.red);
+                                txtMatkhaucu.setBorder(RedLine);
+                                txtMatkhaucu.setText("");
+                            }
+                        }
+                    } else {
+                        lbXacnhan.setText("*Xác nhận mật khẩu sai.");
+                        lbXacnhan.setForeground(Color.red);
+                        Border RedLine = BorderFactory.createLineBorder(Color.red);
+                        txtXacnhan.setBorder(RedLine);
+                        txtMatkhaucu.setText("");
+                        txtMatkhaumoi.setText("");
+                        txtXacnhan.setText("");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_txtXacnhanKeyPressed
+
+    private void txtTaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTaikhoanMouseClicked
+        lbTaikhoan.setText("");
+        txtTaikhoan.setBorder(null);
+    }//GEN-LAST:event_txtTaikhoanMouseClicked
+
+    private void txtMatkhaucuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatkhaucuMouseClicked
+        lbMatkhaucu.setText("");
+        txtMatkhaucu.setBorder(null);
+    }//GEN-LAST:event_txtMatkhaucuMouseClicked
+
+    private void txtMatkhaumoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMatkhaumoiMouseClicked
+        lbMatkhaumoi.setText("");
+        txtMatkhaumoi.setBorder(null);
+    }//GEN-LAST:event_txtMatkhaumoiMouseClicked
+
+    private void txtXacnhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtXacnhanMouseClicked
+        lbXacnhan.setText("");
+        txtXacnhan.setBorder(null);
+    }//GEN-LAST:event_txtXacnhanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -292,9 +667,13 @@ public class FDoiMatKhau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtMatkhauc;
-    private javax.swing.JTextField txtMatkhaunew;
-    private javax.swing.JTextField txtMatkhauold;
+    private javax.swing.JLabel lbMatkhaucu;
+    private javax.swing.JLabel lbMatkhaumoi;
+    private javax.swing.JLabel lbTaikhoan;
+    private javax.swing.JLabel lbXacnhan;
+    private javax.swing.JTextField txtMatkhaucu;
+    private javax.swing.JTextField txtMatkhaumoi;
     private javax.swing.JTextField txtTaikhoan;
+    private javax.swing.JTextField txtXacnhan;
     // End of variables declaration//GEN-END:variables
 }

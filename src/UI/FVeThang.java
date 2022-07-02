@@ -18,15 +18,17 @@ public class FVeThang extends javax.swing.JFrame {
      */
     public FVeThang(String mave) {
         initComponents();
-        setSize(960,480);
-        setLocationRelativeTo(this);
-          this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setSize(960, 480);
+        setLocationRelativeTo(null);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         loadForm(mave);
     }
-public void loadForm(String checkVe){
+
+    public void loadForm(String checkVe) {
         DangKyVeThangDAO dkvt = new DangKyVeThangDAO();
         TongVeDTO dto = dkvt.checkVechoformVethang(checkVe);
-        if (dto!=null){
+        if (dto != null) {
             lbMave.setText(dto.getMaVe());
             lbNgayxuathoadon.setText(dto.getNgayDk().toString());
             lbTen.setText(dto.getTenKhach());
@@ -37,6 +39,7 @@ public void loadForm(String checkVe){
             lbSdt.setText(dto.getSdt());
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
