@@ -206,11 +206,6 @@ public class PFQuanLyNhanVien extends javax.swing.JPanel {
                 txtTimkiemMouseClicked(evt);
             }
         });
-        txtTimkiem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTimkiemActionPerformed(evt);
-            }
-        });
         txtTimkiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTimkiemKeyPressed(evt);
@@ -383,7 +378,46 @@ public class PFQuanLyNhanVien extends javax.swing.JPanel {
         txtTimkiem.setForeground(Color.black);
     }//GEN-LAST:event_txtTimkiemMouseClicked
 
-    private void txtTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimkiemActionPerformed
+    private void txtTimkiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimkiemKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            DefaultTableModel tblModel = (DefaultTableModel) TableNhanVien.getModel();
+            Object[] row = new Object[4];
+            String checkAcc = txtTimkiem.getText();
+            DangNhapDAO dn = new DangNhapDAO();
+            AccountDTO ac = dn.findAccbyTaikhoan(txtTimkiem.getText());
+            for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
+                tblModel.removeRow(i);
+            }
+            if (ac != null) {
+                row[0] = ac.getTenNguoidung();
+                row[1] = ac.getSdt();
+                row[2] = ac.getTaiKhoan();
+                row[3] = ac.getMatKhau();
+                tblModel.addRow(row);
+                TableNhanVien.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+                    @Override
+                    public void valueChanged(ListSelectionEvent e) {
+                        if (TableNhanVien.getSelectedRow() >= 0) {
+                            txtTaikhoan.setEditable(false);
+                            txtTen.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 0));
+                            txtSdt.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 1));
+                            txtTaikhoan.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 2));
+                            txtPass.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 3));
+                        }
+                    }
+                });
+                txtTimkiem.setText("Nhập tài khoản...");
+                txtTimkiem.setForeground(new Color(153, 153, 153));
+            } else {
+                JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản");
+                txtTimkiem.setText("Nhập tài khoản...");
+                txtTimkiem.setForeground(new Color(153, 153, 153));
+                loadTabel();
+            }
+        }
+    }//GEN-LAST:event_txtTimkiemKeyPressed
+
+    private void btnTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemActionPerformed
         DefaultTableModel tblModel = (DefaultTableModel) TableNhanVien.getModel();
         Object[] row = new Object[4];
         String checkAcc = txtTimkiem.getText();
@@ -422,50 +456,6 @@ public class PFQuanLyNhanVien extends javax.swing.JPanel {
                 loadTabel();
             }
         }
-    }//GEN-LAST:event_txtTimkiemActionPerformed
-
-    private void txtTimkiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimkiemKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            DefaultTableModel tblModel = (DefaultTableModel) TableNhanVien.getModel();
-            Object[] row = new Object[4];
-
-            String checkAcc = txtTimkiem.getText();
-            DangNhapDAO dn = new DangNhapDAO();
-            AccountDTO ac = dn.findAccbyTaikhoan(txtTimkiem.getText());
-            for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
-                tblModel.removeRow(i);
-            }
-            if (ac != null) {
-                row[0] = ac.getTenNguoidung();
-                row[1] = ac.getSdt();
-                row[2] = ac.getTaiKhoan();
-                row[3] = ac.getMatKhau();
-                tblModel.addRow(row);
-                TableNhanVien.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-                    @Override
-                    public void valueChanged(ListSelectionEvent e) {
-                        if (TableNhanVien.getSelectedRow() >= 0) {
-                            txtTaikhoan.setEditable(false);
-                            txtTen.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 0));
-                            txtSdt.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 1));
-                            txtTaikhoan.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 2));
-                            txtPass.setText((String) TableNhanVien.getValueAt(TableNhanVien.getSelectedRow(), 3));
-                        }
-                    }
-                });
-                txtTimkiem.setText("Nhập tài khoản...");
-                txtTimkiem.setForeground(new Color(153, 153, 153));
-            } else {
-                JOptionPane.showMessageDialog(this, "Không tìm thấy tài khoản");
-                txtTimkiem.setText("Nhập tài khoản...");
-                txtTimkiem.setForeground(new Color(153, 153, 153));
-                loadTabel();
-            }
-        }
-    }//GEN-LAST:event_txtTimkiemKeyPressed
-
-    private void btnTimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimkiemActionPerformed
-
     }//GEN-LAST:event_btnTimkiemActionPerformed
 
     private void txtSdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSdtActionPerformed

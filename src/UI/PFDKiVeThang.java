@@ -496,7 +496,7 @@ public class PFDKiVeThang extends javax.swing.JPanel {
                     loadTable();
                 } else {
                     if (dkvt.checkVe(mave) != null) {
-                        JOptionPane.showMessageDialog(this, "Không thể cập nhật vì mã vé đã tồn tại");
+                        JOptionPane.showMessageDialog(this, "Mã vé đã tồn tại");
                         txtMaVe.setText("");
                         txtName.setText("");
                         txtSDT.setText("");
