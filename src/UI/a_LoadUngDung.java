@@ -112,7 +112,7 @@ public class a_LoadUngDung extends javax.swing.JFrame {
         a_LoadUngDung form = new a_LoadUngDung();
         form.setVisible(true);
         try {
-            for (int i = 0; i <= 100; i++) {
+            for (int i = 0; i <= 100; i=i+2) {
                 Thread.sleep(100);
                 form.LoadingValue.setText(i + "%");
                 if (i==10){
