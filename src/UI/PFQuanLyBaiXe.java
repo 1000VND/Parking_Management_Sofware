@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
+
 import DAO.QuanLyBaiXeDAO;
 import DAO.TraCuuBaiXeDAO;
 import java.awt.event.ItemEvent;
@@ -16,6 +17,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author Admin
@@ -27,14 +29,14 @@ public class PFQuanLyBaiXe extends javax.swing.JPanel {
      */
     public PFQuanLyBaiXe() {
         initComponents();
-        setSize(1000,505);
-           LoadForm();
+        setSize(1000, 505);
+        LoadForm();
         showTable();
         loadTabel();
     }
-private void LoadForm() {
-        TraCuuBaiXeDAO tx = new TraCuuBaiXeDAO();
 
+    private void LoadForm() {
+        TraCuuBaiXeDAO tx = new TraCuuBaiXeDAO();
         txtXeA.setText(tx.XeMayA());
         txtXeB.setText(tx.XeMayB());
         txtXeC.setText(tx.XeMayC());
@@ -66,6 +68,7 @@ private void LoadForm() {
             tblModel.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -420,7 +423,6 @@ private void LoadForm() {
     }//GEN-LAST:event_txtXeDActionPerformed
 
     private void cbxLoaiXeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLoaiXeItemStateChanged
-        // TODO add your handling code here:
         DefaultTableModel tblModel = (DefaultTableModel) TableXeTrongBai.getModel();
         Object[] row = new Object[8];
         cbxLoaiXe = (JComboBox<String>) evt.getSource();
@@ -510,12 +512,12 @@ private void LoadForm() {
                     row[7] = list.get(i).getGioGui();
                     tblModel.addRow(row);
                 }
-            } else{
+            } else {
                 for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
                     tblModel.removeRow(i);
                 }
                 QuanLyBaiXeDAO tx = new QuanLyBaiXeDAO();
-                ArrayList<NhapXeDTO> list = tx.findXe(cbxLoaiXe.getSelectedItem().toString(),cbxLoaiVe.getSelectedItem().toString());
+                ArrayList<NhapXeDTO> list = tx.findXe(cbxLoaiXe.getSelectedItem().toString(), cbxLoaiVe.getSelectedItem().toString());
                 for (int i = 0; i < list.size(); i++) {
                     row[0] = list.get(i).getLoaiXe();
                     row[1] = list.get(i).getBienSo();
@@ -533,7 +535,7 @@ private void LoadForm() {
 
     private void cbxLoaiVeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxLoaiVeItemStateChanged
         // TODO add your handling code here:
-          DefaultTableModel tblModel = (DefaultTableModel) TableXeTrongBai.getModel();
+        DefaultTableModel tblModel = (DefaultTableModel) TableXeTrongBai.getModel();
         Object[] row = new Object[8];
         cbxLoaiVe = (JComboBox<String>) evt.getSource();
         if (evt.getStateChange() == ItemEvent.SELECTED) {
@@ -622,12 +624,12 @@ private void LoadForm() {
                     row[7] = list.get(i).getGioGui();
                     tblModel.addRow(row);
                 }
-            } else{
+            } else {
                 for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
                     tblModel.removeRow(i);
                 }
                 QuanLyBaiXeDAO tx = new QuanLyBaiXeDAO();
-                ArrayList<NhapXeDTO> list = tx.findXe(cbxLoaiXe.getSelectedItem().toString(),cbxLoaiVe.getSelectedItem().toString());
+                ArrayList<NhapXeDTO> list = tx.findXe(cbxLoaiXe.getSelectedItem().toString(), cbxLoaiVe.getSelectedItem().toString());
                 for (int i = 0; i < list.size(); i++) {
                     row[0] = list.get(i).getLoaiXe();
                     row[1] = list.get(i).getBienSo();
@@ -640,7 +642,7 @@ private void LoadForm() {
                     tblModel.addRow(row);
                 }
             }
-    }
+        }
     }//GEN-LAST:event_cbxLoaiVeItemStateChanged
 
 

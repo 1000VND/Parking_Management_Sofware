@@ -3,7 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Github/Do_An/src/UI/FHoaDon.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/FMenuStaff.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/FThongKeLuotGuiXe.java</file>
+            <file>file:/D:/Github/Do_An/src/DAO/NhapXeDAO.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/PFNhanXe.java</file>
+            <file>file:/D:/Github/Do_An/src/DAO/QuanLyBaiXeDAO.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/PFQuanLyNhanVien.java</file>
+            <file>file:/D:/Github/Do_An/src/DAO/TraCuuBaiXeDAO.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/FThongKeVeThang.java</file>
+            <file>file:/D:/Github/Do_An/src/DAO/ThongKeDAO.java</file>
+            <file>file:/D:/Github/Do_An/src/DAO/DangNhapDAO.java</file>
+            <file>file:/D:/Github/Do_An/src/DAO/TongXeDAO.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/PFQuanLyBaiXe.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/FVeThang.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/FLogin.java</file>
+            <file>file:/D:/Github/Do_An/src/UI/FErrorLogin.java</file>
             <file>file:/D:/Github/Do_An/src/UI/a_LoadUngDung.java</file>
         </group>
     </open-files>

@@ -29,50 +29,19 @@ public class a_LoadUngDung extends javax.swing.JFrame {
     private void initComponents() {
 
         BackGroundPane = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         LoadindLabel = new javax.swing.JLabel();
         LoadingValue = new javax.swing.JLabel();
         LoadingBar = new javax.swing.JProgressBar();
-        BackGroundImage = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        BackGroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         BackGroundPane.setBackground(new java.awt.Color(102, 102, 255));
         BackGroundPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(75, 116, 71));
-
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(235, 138, 68));
-        jLabel3.setText("Phần Mềm Quản lý Bãi Gửi Xe Của Nhóm 9");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 980, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        BackGroundPane.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 980, -1));
 
         LoadindLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         LoadindLabel.setText("Đang tải...");
@@ -83,15 +52,20 @@ public class a_LoadUngDung extends javax.swing.JFrame {
         BackGroundPane.add(LoadingValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 680, 50, 30));
         BackGroundPane.add(LoadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 1270, 10));
 
-        BackGroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/unknown (2).png"))); // NOI18N
-        BackGroundImage.setPreferredSize(new java.awt.Dimension(1270, 720));
-        BackGroundPane.add(BackGroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/d746925076f7acef40bc89a27ad40b9a-removebg-preview.png"))); // NOI18N
+        BackGroundPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, -70, 540, 600));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/Tham-khao-mau-icon-Hello-dac-sac-removebg-preview.png"))); // NOI18N
         BackGroundPane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -20, 540, 430));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/d746925076f7acef40bc89a27ad40b9a-removebg-preview.png"))); // NOI18N
-        BackGroundPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, -70, 540, 600));
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel3.setText("Phần Mềm Quản lý Bãi Gửi Xe Của Nhóm 9");
+        BackGroundPane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 980, 100));
+
+        BackGroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/photo-1617957689233-207e3cd3c610 (1).jpg"))); // NOI18N
+        BackGroundImage.setPreferredSize(new java.awt.Dimension(1270, 720));
+        BackGroundPane.add(BackGroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +151,5 @@ public class a_LoadUngDung extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
