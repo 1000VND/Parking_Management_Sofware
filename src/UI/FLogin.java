@@ -78,6 +78,11 @@ public class FLogin extends javax.swing.JFrame {
                 txtUserNameMouseClicked(evt);
             }
         });
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserNameActionPerformed(evt);
+            }
+        });
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyPressed(evt);
@@ -117,7 +122,7 @@ public class FLogin extends javax.swing.JFrame {
         btnDangNhap.setBackground(new java.awt.Color(102, 102, 255));
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
-        btnDangNhap.setBorder(null);
+        btnDangNhap.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDangNhap.setBorderPainted(false);
         btnDangNhap.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDangNhap.setName("btnDangNhap"); // NOI18N
@@ -430,6 +435,10 @@ public class FLogin extends javax.swing.JFrame {
         lbMatkhau.setText("");
         txtPassWord.setBorder(null);
     }//GEN-LAST:event_txtPassWordMouseClicked
+
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameActionPerformed
 
     /**
      * @param args the command line arguments

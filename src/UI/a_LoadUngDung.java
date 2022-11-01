@@ -60,7 +60,7 @@ public class a_LoadUngDung extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel3.setText("Phần Mềm Quản lý Bãi Gửi Xe Của Nhóm 9");
+        jLabel3.setText("Phần Mềm Quản lý Bãi Gửi Xe Của Nhóm 4");
         BackGroundPane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 980, 100));
 
         BackGroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/photo-1617957689233-207e3cd3c610 (1).jpg"))); // NOI18N
