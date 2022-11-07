@@ -384,7 +384,7 @@ public class PFQuanLyNhanVien extends javax.swing.JPanel {
             Object[] row = new Object[4];
             String checkAcc = txtTimkiem.getText();
             DangNhapDAO dn = new DangNhapDAO();
-            AccountDTO ac = dn.findAccbyTaikhoan(txtTimkiem.getText());
+            AccountDTO ac = dn.CheckUser(txtTimkiem.getText());
             for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
                 tblModel.removeRow(i);
             }
@@ -429,7 +429,7 @@ public class PFQuanLyNhanVien extends javax.swing.JPanel {
             txtTimkiem.setText("Nhập tài khoản...");
             txtTimkiem.setForeground(new Color(153, 153, 153));
         } else {
-            AccountDTO ac = dn.findAccbyTaikhoan(txtTimkiem.getText());
+            AccountDTO ac = dn.CheckUser(txtTimkiem.getText());
             for (int i = tblModel.getRowCount() - 1; i >= 0; i--) {
                 tblModel.removeRow(i);
             }

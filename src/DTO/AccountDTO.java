@@ -9,6 +9,7 @@ package DTO;
  * @author Lê Quang Hưng
  */
 public class AccountDTO {
+    private int Id;
     private String taiKhoan;
     private String tenNguoidung;
     private String sdt;
@@ -17,11 +18,20 @@ public class AccountDTO {
     public AccountDTO() {
     }
 
-    public AccountDTO(String taiKhoan, String tenNguoidung, String sdt, String matKhau) {
+    public AccountDTO(int Id, String taiKhoan, String tenNguoidung, String sdt, String matKhau) {
+        this.Id = Id;
         this.taiKhoan = taiKhoan;
         this.tenNguoidung = tenNguoidung;
         this.sdt = sdt;
         this.matKhau = matKhau;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getTaiKhoan() {
@@ -55,6 +65,8 @@ public class AccountDTO {
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
     }
+
+    
     
     
 }

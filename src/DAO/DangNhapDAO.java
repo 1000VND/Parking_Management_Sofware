@@ -18,16 +18,18 @@ public class DangNhapDAO extends KetNoiDAO {
 
     Connection conn = null;
     PreparedStatement ps = null;
+    List<AccountDTO> list = new ArrayList<>();
 
     public AccountDTO CheckUser(String user) {
         AccountDTO tk = null;
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from ACCOUNT where USERNAME=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, user);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call Login_Find_User(?)}");
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from ACCOUNT where USERNAME=?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+            cs.setString(1, user);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
                 tk = new AccountDTO();
                 tk.setTaiKhoan(rs.getString(1));
                 tk.setTenNguoidung(rs.getString(2));
@@ -36,6 +38,7 @@ public class DangNhapDAO extends KetNoiDAO {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            tk = null;
         }
         return tk;
     }
@@ -43,18 +46,20 @@ public class DangNhapDAO extends KetNoiDAO {
     public AccountDTO CheckPass(String pass, String user) {
         AccountDTO tk = null;
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select PASS from ACCOUNT where PASS=? and USERNAME=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, pass);
-            ps.setString(2, user);
-            ResultSet rs = ps.executeQuery();
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call Login_Check_Pass(?,?)}");
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select PASS from ACCOUNT where PASS=? and USERNAME=?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+            cs.setString(1, pass);
+            cs.setString(2, user);
+            ResultSet rs = cs.executeQuery();
             if (rs.next()) {
                 tk = new AccountDTO();
                 tk.setMatKhau(rs.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();
+            tk = null;
         }
         return tk;
     }
@@ -62,12 +67,13 @@ public class DangNhapDAO extends KetNoiDAO {
     public AccountDTO CheckPhone(String phone, String user) {
         AccountDTO tk = null;
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from ACCOUNT where PHONE=? and USERNAME=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, phone);
-            ps.setString(2, user);
-            ResultSet rs = ps.executeQuery();
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call Login_Check_Phone(?,?)}");
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from ACCOUNT where PHONE=? and USERNAME=?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+            cs.setString(1, phone);
+            cs.setString(2, user);
+            ResultSet rs = cs.executeQuery();
             if (rs.next()) {
                 tk = new AccountDTO();
                 tk.setTaiKhoan(rs.getString(1));
@@ -121,45 +127,24 @@ public class DangNhapDAO extends KetNoiDAO {
         return update;
     }
 
-    List<AccountDTO> list = new ArrayList<>();
 
     public static ArrayList<AccountDTO> tableAcc() {
         ArrayList<AccountDTO> accounList = new ArrayList<>();
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select *from ACCOUNT order by USERNAME";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from ACCOUNT order by USERNAME";
+//            Statement st = conn.createStatement();
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call Table_Account()}");
+            ResultSet rs = cs.executeQuery();
             AccountDTO nx;
             accounList.removeAll(accounList);
             while (rs.next()) {
-                nx = new AccountDTO(rs.getString("USERNAME"), rs.getString("TENNV"), rs.getString("PHONE"), rs.getString("PASS"));
+                nx = new AccountDTO(rs.getInt("Id"),rs.getString("USERNAME"), rs.getString("TENNV"), rs.getString("PHONE"), rs.getString("PASS"));
                 accounList.add(nx);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return accounList;
-    }
-
-    public AccountDTO findAccbyTaikhoan(String taikhoan) {
-        AccountDTO ac = null;
-        try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from ACCOUNT where USERNAME=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, taikhoan);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                ac = new AccountDTO();
-                ac.setTaiKhoan(rs.getString(1));
-                ac.setTenNguoidung(rs.getString(2));
-                ac.setSdt(rs.getString(3));
-                ac.setMatKhau(rs.getString(4));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ac;
     }
 }
