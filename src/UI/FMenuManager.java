@@ -70,7 +70,6 @@ public class FMenuManager extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(1270, 720));
         setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));

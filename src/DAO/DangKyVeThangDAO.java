@@ -90,22 +90,22 @@ public class DangKyVeThangDAO extends KetNoiDAO {
         return update;
     }
 
-    public TongVeDTO checkVe(String mave) {
-        TongVeDTO dkvt = null;
-        try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select vID from TONGVE where vID='" + mave + "'";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                dkvt = new TongVeDTO();
-                dkvt.setMaVe(rs.getString("vID"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return dkvt;
-    }
+//    public TongVeDTO checkVe(String mave) {
+//        TongVeDTO dkvt = null;
+//        try {
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select vID from TONGVE where vID='" + mave + "'";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                dkvt = new TongVeDTO();
+//                dkvt.setMaVe(rs.getString("vID"));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return dkvt;
+//    }
     
     
     List<TongVeDTO> list = new ArrayList<>();
@@ -113,10 +113,11 @@ public class DangKyVeThangDAO extends KetNoiDAO {
     public static ArrayList<TongVeDTO> tableVethang() {
         ArrayList<TongVeDTO> accounList = new ArrayList<>();
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select *from TONGVE where LOAIVE ='Vé Tháng'";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call GetDataTable()}");
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from TONGVE where LOAIVE ='Vé Tháng'";
+//            Statement st = conn.createStatement();
+            ResultSet rs = cs.executeQuery();
             TongVeDTO nx;
             accounList.removeAll(accounList);
             while (rs.next()) {
@@ -132,11 +133,12 @@ public class DangKyVeThangDAO extends KetNoiDAO {
     public TongVeDTO checkVechoformVethang(String mave) {
         TongVeDTO dkvt = null;
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from TONGVE where vID='" + mave + "'";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call CheckVeThang(?)}");
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from TONGVE where vID='" + mave + "'";
+//            PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 dkvt = new TongVeDTO();
                 dkvt.setMaVe(rs.getString("vID"));
                 dkvt.setTenKhach(rs.getString("TENKH"));

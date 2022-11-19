@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UI;
 
+import Application_New.FormForStaff;
 import DAO.DangNhapDAO;
 import DTO.AccountDTO;
 import java.awt.Color;
@@ -12,15 +9,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
-/**
- *
- * @author Admin
- */
 public class FLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FLogin
-     */
     public FLogin() {
         initComponents();
         setSize(1270, 720);
@@ -287,7 +277,7 @@ public class FLogin extends javax.swing.JFrame {
                     } else {
                         if (tk1 != null) {
                             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                            new FMenuStaff(txtUserName.getText()).setVisible(true);
+                            new FormForStaff(txtUserName.getText()).setVisible(true);
                             this.dispose();
                         } else {
                             lbMatkhau.setText("*Mật khẩu không đúng");
@@ -351,7 +341,7 @@ public class FLogin extends javax.swing.JFrame {
                         } else {
                             if (tk1 != null) {
                                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                                new FMenuStaff(txtUserName.getText()).setVisible(true);
+                                new FormForStaff(txtUserName.getText()).setVisible(true);
                                 this.dispose();
                             } else {
                                 lbMatkhau.setText("*Mật khẩu không đúng");
@@ -413,7 +403,7 @@ public class FLogin extends javax.swing.JFrame {
                         } else {
                             if (tk1 != null) {
                                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                                new FMenuStaff(txtUserName.getText()).setVisible(true);
+                                new FormForStaff(txtUserName.getText()).setVisible(true);
                                 this.dispose();
                             } else {
                                 lbMatkhau.setText("*Mật khẩu không đúng");
@@ -437,12 +427,8 @@ public class FLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassWordMouseClicked
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

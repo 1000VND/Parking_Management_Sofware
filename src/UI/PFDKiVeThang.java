@@ -428,7 +428,7 @@ public class PFDKiVeThang extends javax.swing.JPanel {
             } else {
                 String checkVe = txtMaVe.getText();
                 DangKyVeThangDAO dkvt = new DangKyVeThangDAO();
-                TongVeDTO dkdto = dkvt.checkVe(checkVe);
+                TongVeDTO dkdto = dkvt.checkVechoformVethang(checkVe);
                 if (dkdto != null) {
                     JOptionPane.showMessageDialog(this, "Vé tháng đã tồn tại");
                     txtMaVe.setText("");
@@ -491,7 +491,7 @@ public class PFDKiVeThang extends javax.swing.JPanel {
                     txtMauXe.setText("");
                     loadTable();
                 } else {
-                    if (dkvt.checkVe(mave) != null) {
+                    if (dkvt.checkVechoformVethang(mave) != null) {
                         JOptionPane.showMessageDialog(this, "Mã vé đã tồn tại");
                         txtMaVe.setText("");
                         txtName.setText("");

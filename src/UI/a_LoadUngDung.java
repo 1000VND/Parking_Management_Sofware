@@ -15,7 +15,6 @@ public class a_LoadUngDung extends javax.swing.JFrame {
      */
     public a_LoadUngDung() {
         initComponents();
-        setSize(1270, 720);
         setLocationRelativeTo(null);
     }
 
@@ -29,55 +28,39 @@ public class a_LoadUngDung extends javax.swing.JFrame {
     private void initComponents() {
 
         BackGroundPane = new javax.swing.JPanel();
-        LoadindLabel = new javax.swing.JLabel();
-        LoadingValue = new javax.swing.JLabel();
         LoadingBar = new javax.swing.JProgressBar();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        BackGroundImage = new javax.swing.JLabel();
+        LoadingValue = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         BackGroundPane.setBackground(new java.awt.Color(102, 102, 255));
         BackGroundPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        BackGroundPane.add(LoadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 940, 10));
 
-        LoadindLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        LoadindLabel.setText("Đang tải...");
-        BackGroundPane.add(LoadindLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 290, 30));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/zyro-image (3).png"))); // NOI18N
+        jLabel1.setToolTipText("");
+        jLabel1.setPreferredSize(new java.awt.Dimension(480, 480));
+        BackGroundPane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 440, 350));
 
-        LoadingValue.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        LoadingValue.setText("0%");
-        BackGroundPane.add(LoadingValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 680, 50, 30));
-        BackGroundPane.add(LoadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 710, 1270, 10));
+        LoadingValue.setText("jLabel2");
+        BackGroundPane.add(LoadingValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 500, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/d746925076f7acef40bc89a27ad40b9a-removebg-preview.png"))); // NOI18N
-        BackGroundPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, -70, 540, 600));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/Tham-khao-mau-icon-Hello-dac-sac-removebg-preview.png"))); // NOI18N
-        BackGroundPane.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -20, 540, 430));
-
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel3.setText("Phần Mềm Quản lý Bãi Gửi Xe Của Nhóm 4");
-        BackGroundPane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 980, 100));
-
-        BackGroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Image/photo-1617957689233-207e3cd3c610 (1).jpg"))); // NOI18N
-        BackGroundImage.setPreferredSize(new java.awt.Dimension(1270, 720));
-        BackGroundPane.add(BackGroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 720));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setText("PHẦN MỀM QUẢN LÝ BÃI GỬI XE");
+        BackGroundPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 360, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(BackGroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+            .addComponent(BackGroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackGroundPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BackGroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -113,24 +96,10 @@ public class a_LoadUngDung extends javax.swing.JFrame {
         a_LoadUngDung form = new a_LoadUngDung();
         form.setVisible(true);
         try {
-            for (int i = 0; i <= 100; i=i+2) {
+            for (int i = 20; i <= 100; i=i+2) {
                 Thread.sleep(100);
                 form.LoadingValue.setText(i + "%");
-                if (i==10){
-                    form.LoadindLabel.setText("Đang khởi động hệ thống");
-                } 
-                if (i==20){
-                    form.LoadindLabel.setText("Đang tải dữ liệu");
-                }
-                if (i==50){
-                    form.LoadindLabel.setText("Đang kết nối máy chủ");
-                }
-                if (i==70){
-                    form.LoadindLabel.setText("Kết nối thành công");
-                }
-                if (i==80){
-                    form.LoadindLabel.setText("Đang khởi động giao diện");
-                } if (i==100){
+                if (i==100){
                     new FLogin().setVisible(true);
                     form.dispose();
                 }
@@ -143,13 +112,10 @@ public class a_LoadUngDung extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BackGroundImage;
     private javax.swing.JPanel BackGroundPane;
-    private javax.swing.JLabel LoadindLabel;
     private javax.swing.JProgressBar LoadingBar;
     private javax.swing.JLabel LoadingValue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
