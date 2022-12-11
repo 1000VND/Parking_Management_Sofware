@@ -10,15 +10,25 @@ import UI.PFThongTinThem;
 import UI.PFTraCuuBaiXe;
 import UI.PFTraXe;
 import java.awt.Color;
+import java.util.List;
 
 public class FormForStaff extends javax.swing.JFrame {
 
     private PFNhanXe PFNhanXeTab;
     private PFTraXe PFTraXeTab;
     private PFDKiVeThang PFDKiVeThangTab;
-    private PFTraCuuBaiXe PFTraCuuBaiXeTab;    
+    private PFTraCuuBaiXe PFTraCuuBaiXeTab;
     private PFTraCuuBaiXe PFBienBanTab;
     private PFThongTinThem PFInfor;
+    
+    String dataFromChangePass;
+
+    public FormForStaff() {
+        initComponents();
+        setSize(1600, 900);
+        setLocationRelativeTo(null);
+        this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
+    }
 
     public FormForStaff(String user) {
         initComponents();
@@ -26,7 +36,7 @@ public class FormForStaff extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setTitle("PHẦN MỀN QUẢN LÝ BÃI GỬI XE");
         xinchao(user);
-
+        this.dataFromChangePass= user;
     }
 
     private void xinchao(String user) {
@@ -35,6 +45,13 @@ public class FormForStaff extends javax.swing.JFrame {
         if (ac != null) {
             txtChaomung.setText("Chào mừng nhân viên " + ac.getTenNguoidung());
         }
+    }
+    
+    private void formChangePass(String user){
+        DangNhapDAO dn = new DangNhapDAO();
+        AccountDTO ac = dn.CheckUser(user);
+        FDoiMatKhau a = new FDoiMatKhau(ac.getTaiKhoan());
+        a.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -404,7 +421,7 @@ public class FormForStaff extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutMouseClicked
 
     private void btnDoiMatKhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoiMatKhauMouseClicked
-        new FDoiMatKhau().setVisible(true);
+        formChangePass(this.dataFromChangePass);
     }//GEN-LAST:event_btnDoiMatKhauMouseClicked
 
     private void btnNhapXeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhapXeMouseClicked

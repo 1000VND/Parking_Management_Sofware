@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import DTO.TongDKVeThangDTO;
@@ -12,10 +8,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-/**
- *
- * @author Lê Quang Hưng
- */
 public class ThongKeDAO extends KetNoiDAO {
 
     Connection conn = null;
@@ -51,7 +43,20 @@ public class ThongKeDAO extends KetNoiDAO {
             TongXeDTO tv;
             tongXelist.removeAll(tongXelist);
             while (rs.next()) {
-                tv = new TongXeDTO(rs.getInt("STT"), rs.getString("BIENSO"), rs.getString("LOAIXE"), rs.getString("LOAIVE"), rs.getString("MAVE"), rs.getString("MAUXE"), rs.getString("KHUVUC"), rs.getString("VITRI"), LocalDate(rs.getDate("NGAYGUI")), rs.getString("GIOGUI"), LocalDate(rs.getDate("NGAYTRA")), rs.getString("GIOTRA"), rs.getInt("TONGTIEN"));
+                tv = new TongXeDTO(
+                        rs.getInt("STT"), 
+                        rs.getString("BIENSO"), 
+                        rs.getString("LOAIXE"), 
+                        rs.getString("LOAIVE"), 
+                        rs.getString("MAVE"), 
+                        rs.getString("MAUXE"), 
+                        rs.getString("KHUVUC"), 
+                        rs.getString("VITRI"), 
+                        LocalDate(rs.getDate("NGAYGUI")), 
+                        rs.getString("GIOGUI"), 
+                        LocalDate(rs.getDate("NGAYTRA")), 
+                        rs.getString("GIOTRA"), 
+                        rs.getInt("TONGTIEN"));
                 tongXelist.add(tv);
             }
         } catch (Exception e) {
@@ -173,20 +178,6 @@ public class ThongKeDAO extends KetNoiDAO {
         }
         return nx;
     }
-    //
-    //
-    //
-    //
-    //
-    //
-    //                    KHOẢNG TRẮNG NÀY ĐỂ NGĂN CÁCH GIỮA 2 FORM
-    //
-    //
-    //
-    //
-    //
-    //
-    //
     
     // form tổng đăng ký vé tháng
     public static ArrayList<TongDKVeThangDTO> loadTableVethang() {

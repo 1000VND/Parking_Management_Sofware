@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import DTO.AccountDTO;
@@ -10,10 +6,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lê Quang Hưng
- */
 public class DangNhapDAO extends KetNoiDAO {
 
     Connection conn = null;
@@ -31,10 +23,11 @@ public class DangNhapDAO extends KetNoiDAO {
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
                 tk = new AccountDTO();
-                tk.setTaiKhoan(rs.getString(1));
-                tk.setTenNguoidung(rs.getString(2));
-                tk.setSdt(rs.getString(3));
-                tk.setMatKhau(rs.getString(4));
+                tk.setId(rs.getInt(1));
+                tk.setTaiKhoan(rs.getString(2));
+                tk.setTenNguoidung(rs.getString(3));
+                tk.setSdt(rs.getString(4));
+                tk.setMatKhau(rs.getString(5));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,12 +43,16 @@ public class DangNhapDAO extends KetNoiDAO {
 //            Connection conn = KetNoiDAO.getKetNoiDAO();
 //            String sql = "select PASS from ACCOUNT where PASS=? and USERNAME=?";
 //            PreparedStatement ps = conn.prepareStatement(sql);
-            cs.setString(1, pass);
-            cs.setString(2, user);
+            cs.setString(1, user);
+            cs.setString(2, pass);
             ResultSet rs = cs.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 tk = new AccountDTO();
-                tk.setMatKhau(rs.getString(1));
+                tk.setId(rs.getInt(1));
+                tk.setTaiKhoan(rs.getString(2));
+                tk.setTenNguoidung(rs.getString(3));
+                tk.setSdt(rs.getString(4));
+                tk.setMatKhau(rs.getString(5));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,8 +73,8 @@ public class DangNhapDAO extends KetNoiDAO {
             ResultSet rs = cs.executeQuery();
             if (rs.next()) {
                 tk = new AccountDTO();
-                tk.setTaiKhoan(rs.getString(1));
-                tk.setSdt(rs.getString(3));
+                tk.setTaiKhoan(rs.getString(2));
+                tk.setSdt(rs.getString(4));
             }
         } catch (Exception e) {
             e.printStackTrace();

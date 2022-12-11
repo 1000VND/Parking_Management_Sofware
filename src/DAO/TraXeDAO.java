@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import DTO.NhapXeDTO;
@@ -14,10 +10,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Lê Quang Hưng
- */
 public class TraXeDAO extends KetNoiDAO {
 
     Connection conn = null;
@@ -34,9 +26,16 @@ public class TraXeDAO extends KetNoiDAO {
             NhapXeDTO nx;
             veXelist.removeAll(veXelist);
             while (rs.next()) {
-                nx = new NhapXeDTO(rs.getString("BIENSO"), rs.getString("LOAIXE"), rs.getString("LOAIVE"),
-                        rs.getString("MAVE"), rs.getString("MAUXE"), rs.getString("KHUVUC"),
-                        rs.getString("VITRI"), LocalDate(rs.getDate("NGAYGUI")), rs.getString("GIOGUI"));
+                nx = new NhapXeDTO(
+                        rs.getString("BIENSO"), 
+                        rs.getString("LOAIXE"), 
+                        rs.getString("LOAIVE"),
+                        rs.getString("MAVE"), 
+                        rs.getString("MAUXE"), 
+                        rs.getString("KHUVUC"),
+                        rs.getString("VITRI"), 
+                        LocalDate(rs.getDate("NGAYGUI")), 
+                        rs.getString("GIOGUI"));
                 veXelist.add(nx);
             }
         } catch (Exception e) {
