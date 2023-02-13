@@ -4,6 +4,9 @@
  */
 package UI;
 
+import Application_New.FormThongTinBaiXe;
+import Application_New.FormLogin;
+import Application_New.FormAdminNhanVien;
 import DAO.DangNhapDAO;
 import DTO.AccountDTO;
 import java.awt.event.KeyEvent;
@@ -14,8 +17,8 @@ import java.awt.event.KeyEvent;
  */
 public class FMenuManager extends javax.swing.JFrame {
 
-    private PFQuanLyNhanVien PFQuanLyNhanVienTab;
-    private PFQuanLyBaiXe PFQuanLyBaiXeTab;
+    private FormAdminNhanVien PFQuanLyNhanVienTab;
+    private FormThongTinBaiXe PFQuanLyBaiXeTab;
     private PFThongKe PFThongKeTab;
     private PFQuanLyVeNgay PFThongTinVeXeTab;
     private PFThongTinThem PFInfor;
@@ -360,11 +363,11 @@ public class FMenuManager extends javax.swing.JFrame {
     private void btnQuanLyNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyNhanVienActionPerformed
         if (TabMainBoard.getSelectedIndex() == 0) {
             TabMainBoard.remove(0);
-            PFQuanLyNhanVienTab = new PFQuanLyNhanVien();
+            PFQuanLyNhanVienTab = new FormAdminNhanVien();
             TabMainBoard.addTab("Quản Lý Nhân Viên", null, PFQuanLyNhanVienTab, "Quản Lý Nhân Viên");
         }
         if (PFQuanLyNhanVienTab == null) {
-            PFQuanLyNhanVienTab = new PFQuanLyNhanVien();
+            PFQuanLyNhanVienTab = new FormAdminNhanVien();
             TabMainBoard.addTab("Quản Lý Nhân Viên", null, PFQuanLyNhanVienTab, "Quản Lý Nhân Viên");
         }
     }//GEN-LAST:event_btnQuanLyNhanVienActionPerformed
@@ -372,22 +375,22 @@ public class FMenuManager extends javax.swing.JFrame {
     private void btnQuanLyBaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyBaiXeActionPerformed
         if (TabMainBoard.getSelectedIndex() == 0) {
             TabMainBoard.remove(0);
-            PFQuanLyBaiXeTab = new PFQuanLyBaiXe();
+            PFQuanLyBaiXeTab = new FormThongTinBaiXe();
             TabMainBoard.addTab("Quản Lý Bãi Xe", null, PFQuanLyBaiXeTab, "Quản Lý Bãi Xe");
         }
         if (PFQuanLyBaiXeTab == null) {
-            PFQuanLyBaiXeTab = new PFQuanLyBaiXe();
+            PFQuanLyBaiXeTab = new FormThongTinBaiXe();
             TabMainBoard.addTab("Quản Lý Bãi Xe", null, PFQuanLyBaiXeTab, "Quản Lý Bãi Xe");
         }
     }//GEN-LAST:event_btnQuanLyBaiXeActionPerformed
 
     private void btnThoatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnThoatKeyPressed
-        new FLogin().setVisible(true);
+        new FormLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnThoatKeyPressed
 
     private void btnThoatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThoatMouseClicked
-        new FLogin().setVisible(true);
+        new FormLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnThoatMouseClicked
 

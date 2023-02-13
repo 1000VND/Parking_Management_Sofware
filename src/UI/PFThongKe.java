@@ -106,7 +106,7 @@ public class PFThongKe extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTKVeThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKVeThangActionPerformed
-        new FThongKeVeThang().setVisible(true);
+        
     }//GEN-LAST:event_btnTKVeThangActionPerformed
 
     private void btnTKGuiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKGuiXeActionPerformed

@@ -4,6 +4,8 @@
  */
 package UI;
 
+import Application_New.FormLogin;
+
 /**
  *
  * @author Admin
@@ -14,7 +16,7 @@ public class Do_an_lap_trinh_huong_doi_tuong {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FLogin fLogin= new FLogin();
+        FormLogin fLogin= new FormLogin();
         fLogin.setVisible(true); 
     }
     

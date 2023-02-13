@@ -43,8 +43,8 @@ public class DangNhapDAO extends KetNoiDAO {
 //            Connection conn = KetNoiDAO.getKetNoiDAO();
 //            String sql = "select PASS from ACCOUNT where PASS=? and USERNAME=?";
 //            PreparedStatement ps = conn.prepareStatement(sql);
-            cs.setString(1, user);
-            cs.setString(2, pass);
+            cs.setString(1, pass);
+            cs.setString(2, user);
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
                 tk = new AccountDTO();

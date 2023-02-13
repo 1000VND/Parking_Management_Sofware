@@ -3,9 +3,11 @@ package DAO;
 import DTO.DKVeThangDTO;
 import DTO.TongVeDTO;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DangKyVeThangDAO extends KetNoiDAO {
@@ -98,8 +100,6 @@ public class DangKyVeThangDAO extends KetNoiDAO {
 //        }
 //        return dkvt;
 //    }
-    
-    
     List<TongVeDTO> list = new ArrayList<>();
 
     public static ArrayList<TongVeDTO> tableVethang() {
@@ -129,10 +129,40 @@ public class DangKyVeThangDAO extends KetNoiDAO {
 //            Connection conn = KetNoiDAO.getKetNoiDAO();
 //            String sql = "select * from TONGVE where vID='" + mave + "'";
 //            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            cs.setString(1, mave);
+            ResultSet rs = cs.executeQuery();
             while (rs.next()) {
                 dkvt = new TongVeDTO();
                 dkvt.setMaVe(rs.getString("vID"));
+                dkvt.setTenKhach(rs.getString("TENKH"));
+                dkvt.setSdt(rs.getString("SDT"));
+                dkvt.setBienSo(rs.getString("BIENSO"));
+                dkvt.setLoaiXe(rs.getString("LOAIXE"));
+                dkvt.setMauXe(rs.getString("MAUXE"));
+                dkvt.setNgayDk(LocalDate(rs.getDate("NGAYDK")));
+                dkvt.setSoTien(rs.getInt("SOTIEN"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dkvt;
+    }
+
+    public DKVeThangDTO getDataToBienBan(String mave) {
+        DKVeThangDTO dkvt = null;
+        java.util.Date date = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        String month = String.valueOf(Calendar.MONTH);
+        try {
+            Connection conn = KetNoiDAO.getKetNoiDAO();
+            String sql = "select * from DKVETHANG where tID='" + mave + "' and month(NGAYDK)='" + month + "'";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            //ps.setString(2, mave);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dkvt = new DKVeThangDTO();
+                dkvt.setMaVethang(rs.getString("tID"));
                 dkvt.setTenKhach(rs.getString("TENKH"));
                 dkvt.setSdt(rs.getString("SDT"));
                 dkvt.setBienSo(rs.getString("BIENSO"));

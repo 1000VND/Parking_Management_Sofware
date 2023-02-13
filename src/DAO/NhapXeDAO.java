@@ -97,7 +97,7 @@ public class NhapXeDAO extends KetNoiDAO {
         return list;
     }
 
-    public static ArrayList<String> LoadcbxViTri(String loaive) {
+   public static ArrayList<String> LoadcbxViTri(String loaive) {
         ArrayList<String> list = new ArrayList<String>();
         try {
             Connection conn = KetNoiDAO.getKetNoiDAO();

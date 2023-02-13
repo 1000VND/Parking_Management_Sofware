@@ -17,14 +17,31 @@ public class ThongKeDAO extends KetNoiDAO {
     public static ArrayList<TongXeDTO> findCar(String Loaixe, String TuNgay, String DenNgay) {
         ArrayList<TongXeDTO> tongXelist = new ArrayList<>();
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from TONGXE where LOAIXE='" + Loaixe + "'and NGAYTRA >= '" + TuNgay + "' and NGAYTRA <= '" + DenNgay + "' order by NGAYTRA";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from TONGXE where LOAIXE='" + Loaixe + "'and NGAYTRA >= '" + TuNgay + "' and NGAYTRA <= '" + DenNgay + "' order by NGAYTRA";
+//            Statement st = conn.createStatement();
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call FindCarThongKe(?,?,?)}");
+            cs.setString(1, Loaixe);            
+            cs.setString(2, TuNgay);
+            cs.setString(3, DenNgay);
+            ResultSet rs = cs.executeQuery();
             TongXeDTO tv;
             tongXelist.removeAll(tongXelist);
             while (rs.next()) {
-                tv = new TongXeDTO(rs.getInt("STT"), rs.getString("BIENSO"), rs.getString("LOAIXE"), rs.getString("LOAIVE"), rs.getString("MAVE"), rs.getString("MAUXE"), rs.getString("KHUVUC"), rs.getString("VITRI"), LocalDate(rs.getDate("NGAYGUI")), rs.getString("GIOGUI"), LocalDate(rs.getDate("NGAYTRA")), rs.getString("GIOTRA"), rs.getInt("TONGTIEN"));
+                tv = new TongXeDTO(
+                        rs.getInt("STT"), 
+                        rs.getString("BIENSO"), 
+                        rs.getString("LOAIXE"), 
+                        rs.getString("LOAIVE"), 
+                        rs.getString("MAVE"), 
+                        rs.getString("MAUXE"), 
+                        rs.getString("KHUVUC"), 
+                        rs.getString("VITRI"), 
+                        LocalDate(rs.getDate("NGAYGUI")), 
+                        rs.getString("GIOGUI"), 
+                        LocalDate(rs.getDate("NGAYTRA")), 
+                        rs.getString("GIOTRA"),
+                        rs.getInt("TONGTIEN"));
                 tongXelist.add(tv);
             }
         } catch (Exception e) {
@@ -36,10 +53,13 @@ public class ThongKeDAO extends KetNoiDAO {
     public static ArrayList<TongXeDTO> findCarAll( String TuNgay, String DenNgay) {
         ArrayList<TongXeDTO> tongXelist = new ArrayList<>();
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from TONGXE where NGAYTRA >= '" + TuNgay + "' and NGAYTRA <= '" + DenNgay + "' order by NGAYTRA";
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from TONGXE where NGAYTRA >= '" + TuNgay + "' and NGAYTRA <= '" + DenNgay + "' order by NGAYTRA";
+//            Statement st = conn.createStatement();
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call FindAllThongKe(?,?)}");
+            cs.setString(1, TuNgay);
+            cs.setString(2, DenNgay);
+            ResultSet rs = cs.executeQuery();
             TongXeDTO tv;
             tongXelist.removeAll(tongXelist);
             while (rs.next()) {
@@ -74,7 +94,20 @@ public class ThongKeDAO extends KetNoiDAO {
             TongXeDTO tv;
             tongXelist.removeAll(tongXelist);
             while (rs.next()) {
-                tv = new TongXeDTO(rs.getInt("STT"), rs.getString("BIENSO"), rs.getString("LOAIXE"), rs.getString("LOAIVE"), rs.getString("MAVE"), rs.getString("MAUXE"), rs.getString("KHUVUC"), rs.getString("VITRI"), LocalDate(rs.getDate("NGAYGUI")), rs.getString("GIOGUI"), LocalDate(rs.getDate("NGAYTRA")), rs.getString("GIOTRA"), rs.getInt("TONGTIEN"));
+                tv = new TongXeDTO(
+                        rs.getInt("STT"), 
+                        rs.getString("BIENSO"), 
+                        rs.getString("LOAIXE"), 
+                        rs.getString("LOAIVE"), 
+                        rs.getString("MAVE"), 
+                        rs.getString("MAUXE"), 
+                        rs.getString("KHUVUC"), 
+                        rs.getString("VITRI"), 
+                        LocalDate(rs.getDate("NGAYGUI")), 
+                        rs.getString("GIOGUI"), 
+                        LocalDate(rs.getDate("NGAYTRA")), 
+                        rs.getString("GIOTRA"), 
+                        rs.getInt("TONGTIEN"));
                 tongXelist.add(tv);
             }
         } catch (Exception e) {
@@ -267,15 +300,15 @@ public class ThongKeDAO extends KetNoiDAO {
         return nx;
     }
 
-    public String loadTien() {
-        String nx = null;
+    public int loadTien() {
+        int nx = 0;
         try {
             Connection conn = KetNoiDAO.getKetNoiDAO();
             String sql = "select sum(SOTIEN) from DKVETHANG";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                nx = rs.getString(1);
+                nx = rs.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -283,15 +316,15 @@ public class ThongKeDAO extends KetNoiDAO {
         return nx;
     }
 
-    public String loadTienTime(String TuNgay, String DenNgay) {
-        String nx = null;
+    public int loadTienTime(String TuNgay, String DenNgay) {
+        int nx = 0;
         try {
             Connection conn = KetNoiDAO.getKetNoiDAO();
             String sql = "select sum(SOTIEN) from DKVETHANG where NGAYDK >= '" + TuNgay + "' and NGAYDK <= '" + DenNgay + "'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                nx = rs.getString(1);
+                nx = rs.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();

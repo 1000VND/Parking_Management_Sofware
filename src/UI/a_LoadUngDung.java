@@ -1,5 +1,7 @@
 package UI;
 
+import Application_New.FormLogin;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -100,7 +102,7 @@ public class a_LoadUngDung extends javax.swing.JFrame {
                 Thread.sleep(100);
                 form.LoadingValue.setText(i + "%");
                 if (i==100){
-                    new FLogin().setVisible(true);
+                    new FormLogin().setVisible(true);
                     form.dispose();
                 }
                 form.LoadingBar.setValue(i);

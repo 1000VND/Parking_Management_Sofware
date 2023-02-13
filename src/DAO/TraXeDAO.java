@@ -20,7 +20,7 @@ public class TraXeDAO extends KetNoiDAO {
         ArrayList<NhapXeDTO> veXelist = new ArrayList<>();
         try {
             Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select *from NHAPXE";
+            String sql = "select * from NHAPXE order by NGAYGUI DESC, GIOGUI DESC";
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             NhapXeDTO nx;
@@ -51,11 +51,12 @@ public class TraXeDAO extends KetNoiDAO {
     public NhapXeDTO findXebyBienso(String bienso) {
         NhapXeDTO nx = null;
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from NHAPXE where BIENSO=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, bienso);
-            ResultSet rs = ps.executeQuery();
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from NHAPXE where BIENSO=?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call FindCar(?)}");
+            cs.setString(1, bienso);
+            ResultSet rs = cs.executeQuery();
             if (rs.next()) {
                 nx = new NhapXeDTO();
                 nx.setBienSo(rs.getString(1));
@@ -77,11 +78,12 @@ public class TraXeDAO extends KetNoiDAO {
     public NhapXeDTO findXebyMave(String mave) {
         NhapXeDTO nx = null;
         try {
-            Connection conn = KetNoiDAO.getKetNoiDAO();
-            String sql = "select * from NHAPXE where MAVE=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, mave);
-            ResultSet rs = ps.executeQuery();
+//            Connection conn = KetNoiDAO.getKetNoiDAO();
+//            String sql = "select * from NHAPXE where MAVE=?";
+//            PreparedStatement ps = conn.prepareStatement(sql);
+            CallableStatement cs = KetNoiDAO.getKetNoiDAO().prepareCall("{call FindCarByMaVe(?)}");
+            cs.setString(1, mave);
+            ResultSet rs = cs.executeQuery();
             if (rs.next()) {
                 nx = new NhapXeDTO();
                 nx.setBienSo(rs.getString(1));
